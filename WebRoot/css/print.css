@@ -1,0 +1,175 @@
+TD
+{
+    FONT-SIZE: 9pt
+}
+A:active
+{
+	COLOR: #ff0000;
+	text-decoration: none;
+}
+A:link
+{
+	COLOR: #0000ff;
+	text-decoration: none;
+
+}
+A:visited
+{
+	COLOR: #800080;
+	text-decoration: none;
+
+}
+A:hover
+{
+	COLOR: #ffa500;
+	text-decoration: none;
+
+}
+BODY
+{
+    BACKGROUND-COLOR: white;
+    FONT-SIZE: 9pt
+}
+TABLE.tableGlcx
+{
+    BACKGROUND-COLOR: #c0c0c0;
+    LEFT: 20px;
+    PADDING-RIGHT: 0px;
+    TEXT-ALIGN: center
+}
+.text
+{
+    BORDER-BOTTOM: 3px groove;
+    BORDER-LEFT: 0px groove;
+    BORDER-RIGHT: 0px groove;
+    BORDER-TOP: 0px groove;
+    FONT-FAMILY: "ËÎÌו";
+    FONT-SIZE: 12px
+}
+TD.tdGlcxItemName
+{
+    BACKGROUND-COLOR: #e9e9e9;
+    TEXT-ALIGN: center
+}
+TD.tdGlcxItemValueL
+{
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-ALIGN: left
+}
+TD.tdGlcxItemValueR
+{
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-ALIGN: right
+}
+TD.tdGlcxItemValueC
+{
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-ALIGN: center
+}
+.glcxTitle
+{
+    FONT-SIZE: 12pt;
+    FONT-WEIGHT: bolder;
+    TEXT-ALIGN: center
+}
+TR.trGlcxItemHead
+{
+    BACKGROUND-COLOR: #d3d3d3;
+    FONT-SIZE: large;
+    FONT-WEIGHT: bolder
+}
+TABLE.tableGlcxIn
+{
+    BACKGROUND-COLOR: #c0c0c0
+}
+TABLE.tableGlcxNsr
+{
+    LEFT: 20px
+}
+.glcxItemHead
+{
+    BACKGROUND-COLOR: #ffffff;
+    FONT-SIZE: 12pt;
+    FONT-WEIGHT: bolder
+}
+TD.tdGlcxHj
+{
+    BACKGROUND-COLOR: #d3d3d3;
+    FONT-WEIGHT: bolder
+}
+TD.tdGlcxHjValue
+{
+    BACKGROUND-COLOR: #dcdcdc
+}
+TD.tdGlcxItemValue
+{
+    BACKGROUND-COLOR: #ffffff
+}
+TR.trGlcxValue
+{
+    BACKGROUND-COLOR: #ffffff;
+    HEIGHT: 15pt
+}
+TR.trGlcxLabel
+{
+    BACKGROUND-COLOR: #e9e9e9;
+    HEIGHT: 16pt
+}
+TABLE.tableTerms
+{
+    COLOR: #4682b4;
+    WIDTH: 200pt
+}
+TR.trGlcxHj
+{
+    BACKGROUND-COLOR: #dcdcdc
+}
+TABLE
+{
+    BACKGROUND-COLOR: #999999
+}
+
+TR
+{font-size:11px;
+    BACKGROUND-COLOR: #e9e9e9
+}
+TD.tdItemName
+{font-size:11px;
+    BACKGROUND-COLOR: #e9e9e9
+}
+TD.tdValue
+{
+    BACKGROUND-COLOR: #ffffff;
+TEXT-ALIGN: center
+    
+}
+TD.tdcenter
+{TEXT-ALIGN: center}
+.list
+{
+    BORDER-BOTTOM-STYLE: inset;
+    BORDER-LEFT-STYLE: inset;
+    BORDER-RIGHT-STYLE: inset;
+    BORDER-TOP-STYLE: inset;
+    FONT-FAMILY: "ËÎÌו";
+    FONT-SIZE: 12px
+}
+input{
+font-size:12px;
+
+}
+.button
+{
+    BORDER-BOTTOM: thin groove;
+    BORDER-LEFT: thin groove;
+    BORDER-RIGHT: thin groove;
+    BORDER-TOP: thin groove;
+    FONT-FAMILY: "ËÎÌו";
+    FONT-SIZE: 12px
+}
+
+TD.tdleftvalue
+{
+BACKGROUND-COLOR: #ffffff;
+TEXT-ALIGN: left
+}

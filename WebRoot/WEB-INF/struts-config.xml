@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+  <form-beans>
+    <form-bean name="mediastoreForm" type="mediastore.web.struts.DynamicForm" />
+    <form-bean name="FactoryInfoForm" type="mediastore.web.form.FactoryInfoForm" />
+    <form-bean name="GoodsClassInfo" type="mediastore.web.form.GoodsClassInfo" />
+    <form-bean name="GoodsTypeInfo" type="mediastore.web.form.GoodsTypeInfo" />
+    <form-bean name="GoodsInfoForm" type="mediastore.web.form.GoodsInfoForm" />
+    <form-bean name="StoreInfoForm" type="mediastore.web.form.StoreInfoForm" />
+    <form-bean name="GoodsImportGoodsInfo" type="mediastore.web.form.GoodsImportGoodsInfo" />
+    <form-bean name="ImportBillForm" type="mediastore.web.form.ImportBillForm" />
+    <form-bean name="GoodsExportGoodsInfo" type="mediastore.web.form.GoodsExportGoodsInfo" />
+    <form-bean name="ExportBillForm" type="mediastore.web.form.ExportBillForm" />
+    <form-bean name="TruckInfoForm" type="mediastore.web.form.TruckInfoForm" />
+    <form-bean name="UserInfoForm" type="mediastore.web.form.UserInfoForm" />
+    <form-bean name="GoodsCheckGoodsInfo" type="mediastore.web.form.GoodsCheckGoodsInfo" />
+    <form-bean name="CheckBillForm" type="mediastore.web.form.CheckBillForm" />
+    <form-bean name="YeWuInfoForm" type="mediastore.web.form.YeWuInfoForm" />
+    <form-bean name="DepartInfoForm" type="mediastore.web.form.DepartInfoForm" />
+    <form-bean name="PayHuoKuanForm" type="mediastore.web.form.PayHuoKuanForm" />
+    <form-bean name="FeiYongTypeForm" type="mediastore.web.form.FeiYongTypeForm" />
+    <form-bean name="FeiYongGoodsForm" type="mediastore.web.form.FeiYongGoodsForm" />
+    <form-bean name="FeiYongBillForm" type="mediastore.web.form.FeiYongBillForm" />
+    <form-bean name="ChangeStoreGoodsForm" type="mediastore.web.form.ChangeStoreGoodsForm" />
+    <form-bean name="ChangeStoreBillForm" type="mediastore.web.form.ChangeStoreBillForm" />
+    <form-bean name="OtherToPayForm" type="mediastore.web.form.OtherToPayForm" />
+    <form-bean name="AccountForm" type="mediastore.web.form.AccountForm" />
+    <form-bean name="PriceChangeForm" type="mediastore.web.form.PriceChangeForm" />
+    <form-bean name="KaiPingForm" type="mediastore.web.form.KaiPingForm" />
+  </form-beans>
+  
+  <global-forwards type="org.apache.struts.action.ActionForward">
+    
+    
+	<forward name="ExportReport" path="/jsp/ExportReport.jsp"/>
+	
+	<forward name="Errors" path="/jsp/errors.jsp"/>
+	<forward name="Infors" path="/jsp/infors.jsp"/>
+    <forward name="ImportItemsView" path="/jsp/ImportItemsView.jsp"/>
+    <forward name="ExportItemsView" path="/jsp/ExportItemsView.jsp"/>
+    <forward name="CheckItemsView" path="/jsp/CheckItemsView.jsp"/>
+    <forward name="FactoryManageView" path="/jsp/FactoryManageView.jsp"/>
+    <forward name="ImportItemsViewLittle" path="/jsp/ImportItemsViewLittle.jsp"/>
+    <forward name="ExportItemsViewLittle" path="/jsp/ExportItemsViewLittle.jsp"/>
+  </global-forwards>
+  
+  <action-mappings>
+  	<!-- 登录、退出 -->
+    <action path="/login" type="mediastore.web.action.LoginAction" name="UserInfoForm" scope="request">
+    <forward name="LoginSuccess" path="/jsp/LoginSuccess.jsp"/>
+    <forward name="SoftReg" path="/jsp/SoftReg.jsp"/>
+    </action>
+    
+    <action path="/logout" type="mediastore.web.action.LogoutAction" name="mediastoreForm" >
+    <forward name="Login" path="/login.jsp"/>
+    </action>
+    
+    <!-- 操作员管理 -->
+    <action path="/userManage" type="mediastore.web.action.UserManageAction" name="UserInfoForm" scope="request">
+    <forward name="UserManage" path="/jsp/UserManage.jsp"/>
+    <forward name="UserManageEdit" path="/jsp/UserManageEdit.jsp"/>
+    </action>
+    
+	<!-- 大类子类 -->
+	<action path="/ClassAndType" type="mediastore.web.action.ClassAndTypeAction" name="mediastoreForm" >
+		<forward name="ClassAndType" path="/jsp/ClassAndType.jsp"/>
+	</action>	
+	
+	<!-- 省市县 -->
+	<action path="/SCT" type="mediastore.web.action.SCTAction" name="mediastoreForm">
+		<forward name="SCT" path="/jsp/SCT.jsp"/>	
+	</action>	
+	
+	<!-- 经销商 -->
+	<action path="/factoryManage" type="mediastore.web.action.FactoryManageAction" name="FactoryInfoForm" scope="request">
+		<forward name="FactoryManage" path="/jsp/FactoryManage.jsp"/>
+    	<forward name="FactoryManageEdit" path="/jsp/FactoryManageEdit.jsp"/>
+    	<forward name="FactoryManageExcel" path="/jsp/FactoryManageExcel.jsp"/>
+    </action>
+	
+	<!-- 大类维护 -->
+	<action path="/goodsClassManage" type="mediastore.web.action.GoodsClassManageAction" name="GoodsClassInfo" scope="request">
+		<forward name="GoodsClassManage" path="/jsp/GoodsClassManage.jsp"/>
+	</action>
+	
+	<!-- 子类维护 -->
+	<action path="/goodsTypeManage" type="mediastore.web.action.GoodsTypeManageAction" name="GoodsTypeInfo" scope="request">
+		<forward name="GoodsTypeManage" path="/jsp/GoodsTypeManage.jsp"/>
+	</action>
+	
+	<!-- 产品维护 -->
+	<action path="/goodsManage" type="mediastore.web.action.GoodsManageAction" name="GoodsInfoForm" scope="request">
+		<forward name="GoodsManage" path="/jsp/GoodsManage.jsp"/>
+    	<forward name="GoodsManageEdit" path="/jsp/GoodsManageEdit.jsp"/>  
+    </action>
+	
+	<!-- 仓库维护 -->
+	<action path="/storeManage" type="mediastore.web.action.StoreManageAction" name="StoreInfoForm" scope="request">
+		<forward name="StoreManage" path="/jsp/StoreManage.jsp"/>
+    	<forward name="StoreManageEdit" path="/jsp/StoreManageEdit.jsp"/>
+    </action>
+	
+	<!-- 产品仓库 -->
+	<action path="/goodsSelect" type="mediastore.web.action.GoodsSelectAction" name="GoodsInfoForm" scope="request">
+		<forward name="GoodsSelect" path="/jsp/GoodsSelect.jsp"/>
+    </action>
+	
+	<!-- 产品仓库 -->
+	<action path="/goodsSelect1" type="mediastore.web.action.GoodsSelect1Action" name="GoodsInfoForm" scope="request">
+		<forward name="GoodsSelect1" path="/jsp/GoodsSelect1.jsp"/>
+    </action>
+	
+	<!-- 产品仓库 -->
+	<action path="/goodsSelect2" type="mediastore.web.action.GoodsSelect2Action" name="GoodsInfoForm" scope="request">
+		<forward name="GoodsSelect2" path="/jsp/GoodsSelect2.jsp"/>
+    </action>
+	    
+    <!-- 采购入库 -->
+    <action path="/importGoodsBill" type="mediastore.web.action.ImportGoodsBillAction" name="GoodsImportGoodsInfo" scope="request">
+    	<forward name="ImportGoodsBill" path="/jsp/ImportGoodsBill.jsp"/>
+    </action>
+    
+    <!-- 入库提交 -->
+    <action path="/importBillSubmit" type="mediastore.web.action.ImportBillSubmitAction" name="ImportBillForm" scope="request"/>
+    
+    <!-- 入库查询 -->
+    <action path="/importBillSearch" type="mediastore.web.action.ImportBillSearchAction" name="ImportBillForm" scope="request">
+    	<forward name="ImportBillSearch" path="/jsp/ImportBillSearch.jsp"/>
+    </action>
+    
+    <!-- 入库单打印 -->
+    <action path="/importItemsView" type="mediastore.web.action.ImportItemsViewAction" name="mediastoreForm"/>
+    
+    <!-- 入库明细查询 -->
+    <action path="/importItemSearch" type="mediastore.web.action.ImportItemSearchAction" name="GoodsImportGoodsInfo" scope="request">
+    	<forward name="ImportItemSearch" path="/jsp/ImportItemSearch.jsp"/>
+    </action>
+    
+    <!-- 出库录入 -->
+    <action path="/exportGoodsBill" type="mediastore.web.action.ExportGoodsBillAction" name="GoodsExportGoodsInfo" scope="request">
+    	<forward name="ExportGoodsBill" path="/jsp/ExportGoodsBill.jsp"/>
+    </action>
+    
+	<!-- 销售单录入 -->
+    <action path="/exportBillSubmit" type="mediastore.web.action.ExportBillSubmitAction" name="ExportBillForm" scope="request">
+	    
+	</action>
+	
+	<!-- 销售单查询 -->
+	<action path="/exportBillSearch" type="mediastore.web.action.ExportBillSearchAction" name="ExportBillForm" scope="request">
+		<forward name="ExportBillSearch" path="/jsp/ExportBillSearch.jsp"/>
+	</action>
+
+	<!-- 销售单打印 -->
+    <action path="/exportItemsView" type="mediastore.web.action.ExportItemsViewAction" name="mediastoreForm"/>
+
+	<!-- 意向单处理 -->
+	<action path="/exportBillHold" type="mediastore.web.action.ExportBillHoldAction" name="ExportBillForm" scope="request">
+		<forward name="ExportBillHold" path="/jsp/ExportBillHold.jsp"/>
+	</action>
+	
+	<!-- 销售明细查询 -->
+    <action path="/exportItemSearch" type="mediastore.web.action.ExportItemSearchAction" name="GoodsExportGoodsInfo" scope="request">
+    	<forward name="ExportItemSearch" path="/jsp/ExportItemSearch.jsp"/>
+    </action>
+    
+    <!-- 运输车辆 -->
+    <action path="/truckManage" type="mediastore.web.action.TruckManageAction" name="TruckInfoForm" scope="request">
+    	<forward name="TruckManage" path="/jsp/TruckManage.jsp"/>
+    	<forward name="TruckManageEdit" path="/jsp/TruckManageEdit.jsp"/>
+    </action>
+    
+    <!-- 货款应收应付 -->
+    <action path="/payHuoKuan" type="mediastore.web.action.PayHuoKuanAction" name="PayHuoKuanForm" scope="request">
+    	<forward name="PayHuoKuan" path="/jsp/PayHuoKuan.jsp"/>
+    	<forward name="PayHuoKuanGroup" path="/jsp/PayHuoKuanGroup.jsp"/>
+    	<forward name="PayHuoKuanDetail" path="/jsp/PayHuoKuanDetail.jsp"/>
+    </action>
+    
+    <!-- 发票应收应开 -->
+    <action path="/payFaPiao" type="mediastore.web.action.PayFaPiaoAction" name="PayHuoKuanForm" scope="request">
+    	<forward name="PayFaPiaoGroup" path="/jsp/PayFaPiaoGroup.jsp"/>
+    	<forward name="PayFaPiao" path="/jsp/PayFaPiao.jsp"/>
+    </action>
+    
+    <!-- 运输车辆 -->
+    <action path="/payYunFei" type="mediastore.web.action.PayYunFeiAction" name="PayHuoKuanForm" scope="request">
+    	<forward name="PayYunFei" path="/jsp/PayYunFei.jsp"/>
+    	<forward name="PayYunFeiGroup" path="/jsp/PayYunFeiGroup.jsp"/>
+    </action>
+    
+    <!-- 损益单录入 -->
+    <action path="/checkGoodsBill" type="mediastore.web.action.CheckGoodsBillAction" name="GoodsCheckGoodsInfo" scope="request">
+	    <forward name="CheckGoodsBill" path="/jsp/CheckGoodsBill.jsp"/>
+	</action>
+	
+	<!-- 损益单查询 -->
+	<action path="/checkBillSearch" type="mediastore.web.action.CheckBillSearchAction" name="CheckBillForm" scope="request">
+		<forward name="CheckBillSearch" path="/jsp/CheckBillSearch.jsp"/>
+	</action>
+	
+	<!-- 损益单打印 -->
+    <action path="/checkItemsView" type="mediastore.web.action.CheckItemsViewAction" name="mediastoreForm"/>
+	
+	<!-- 损益明细查询 -->
+    <action path="/checkItemSearch" type="mediastore.web.action.CheckItemSearchAction" name="GoodsCheckGoodsInfo" scope="request">
+    	<forward name="CheckItemSearch" path="/jsp/CheckItemSearch.jsp"/>
+    </action>
+	
+	<!-- 盘存清单 -->
+    <action path="/repertoryList" type="mediastore.web.action.RepertoryListAction" name="GoodsInfoForm" scope="request">
+	    <forward name="RepertoryList" path="/jsp/RepertoryList.jsp"/>
+	    <forward name="RepertoryPrint" path="/jsp/RepertoryPrint.jsp"/>
+	    <forward name="RepertoryExcel" path="/jsp/RepertoryExcel.jsp"/>
+	</action>
+	
+	<!-- 员工档案 -->
+	<action path="/yeWuManage" type="mediastore.web.action.YeWuManageAction" name="YeWuInfoForm" scope="request">
+    	<forward name="YeWuManage" path="/jsp/YeWuManage.jsp"/>
+    	<forward name="YeWuManageEdit" path="/jsp/YeWuManageEdit.jsp"/>
+   </action>
+   
+   <!-- 更改密码 -->
+	<action path="/changePwd" type="mediastore.web.action.ChangePwdAction" name="UserInfoForm" scope="request">
+    	<forward name="ChangePwd" path="/jsp/ChangePwd.jsp"/>
+   </action>
+	
+	<!-- 预收预付款 -->
+	<action path="/yuShouKuan" type="mediastore.web.action.YuShouKuanAction" name="mediastoreForm">
+    	<forward name="YuShouKuan" path="/jsp/YuShouKuan.jsp"/>
+   </action>
+	
+	<!-- 预收预付款查询 -->
+	<action path="/yuShouKuanSearch" type="mediastore.web.action.YuShouKuanSearchAction" name="mediastoreForm">
+	    <forward name="YuShouKuanGroupSearch" path="/jsp/YuShouKuanGroupSearch.jsp"/>
+    	<forward name="YuShouKuanSearch" path="/jsp/YuShouKuanSearch.jsp"/>
+   </action>	
+   
+   <!-- 分公司 -->
+	<action path="/departManage" type="mediastore.web.action.DepartManageAction" name="DepartInfoForm" scope="request">
+		<forward name="DepartManage" path="/jsp/DepartManage.jsp"/>
+    	<forward name="DepartManageEdit" path="/jsp/DepartManageEdit.jsp"/>
+    </action>
+   
+	<!-- 查看企业资料 -->
+	<action path="/factoryView" type="mediastore.web.action.FactoryViewAction" name="mediastoreForm">
+    	<forward name="FactoryManageView" path="/jsp/FactoryManageView.jsp"/>
+   </action>
+   
+   <!-- 打印收款单 -->
+	<action path="/shouKuanItemView" type="mediastore.web.action.ShouKuanItemViewAction" name="mediastoreForm">
+    	<forward name="ShouKuanItemView" path="/jsp/ShouKuanItemView.jsp"/>
+   </action>
+   
+   <!-- 费用大类 -->
+	<action path="/feiYongClassManage" type="mediastore.web.action.FeiYongClassManageAction" name="FeiYongTypeForm" scope="request">
+    	<forward name="FeiYongClassManage" path="/jsp/FeiYongClassManage.jsp"/>
+   </action>
+   
+   <!-- 费用子类 -->
+	<action path="/feiYongTypeManage" type="mediastore.web.action.FeiYongTypeManageAction" name="FeiYongTypeForm" scope="request">
+    	<forward name="FeiYongTypeManage" path="/jsp/FeiYongTypeManage.jsp"/>
+   </action>
+   
+   <!-- 收入费用单录入 -->
+	<action path="/feiYongBillInput" type="mediastore.web.action.FeiYongBillInputAction" name="FeiYongGoodsForm" scope="request">
+    	<forward name="FeiYongBillInput" path="/jsp/FeiYongBillInput.jsp"/>
+   </action>
+   
+   <!-- 收入费用单录入 -->
+	<action path="/feiYongTypeSelect" type="mediastore.web.action.FeiYongTypeSelectAction" name="mediastoreForm">
+    	<forward name="FeiYongTypeSelect" path="/jsp/FeiYongTypeSelect.jsp"/>
+   </action>
+   
+   <!-- 收入费用单打印 -->
+	<action path="/feiYongItemView" type="mediastore.web.action.FeiYongItemViewAction" name="mediastoreForm">
+    	<forward name="FeiYongItemView" path="/jsp/FeiYongItemView.jsp"/>
+   </action>
+   
+   <!-- 收入费用单查询 -->
+	<action path="/feiYongSearch" type="mediastore.web.action.FeiYongSearchAction" name="FeiYongBillForm" scope="request">
+    	<forward name="FeiYongSearch" path="/jsp/FeiYongSearch.jsp"/>
+   </action>
+   
+   <!-- 收入费用单明细查询 -->
+	<action path="/feiYongItemSearch" type="mediastore.web.action.FeiYongItemSearchAction" name="FeiYongGoodsForm" scope="request">
+    	<forward name="FeiYongItemSearch" path="/jsp/FeiYongItemSearch.jsp"/>
+   </action>
+   
+   <!-- 存取款 -->
+	<action path="/accessMoney" type="mediastore.web.action.AccessMoneyAction" name="AccountForm" scope="request">
+    	<forward name="AccessMoney" path="/jsp/AccessMoney.jsp"/>
+    	<forward name="AccessMoneyResult" path="/jsp/AccessMoneyResult.jsp"/>
+   </action>
+   
+   <!-- 转仓单 -->
+	<action path="/changeStoreBill" type="mediastore.web.action.ChangeStoreBillAction" name="ChangeStoreGoodsForm" scope="request">
+    	<forward name="ChangeStoreBill" path="/jsp/ChangeStoreBill.jsp"/>
+   </action>
+   
+   <!-- 转仓单打印 -->
+	<action path="/changeStoreItemsView" type="mediastore.web.action.ChangeStoreItemsViewAction" name="mediastoreForm">
+    	<forward name="ChangeStoreItemsView" path="/jsp/ChangeStoreItemsView.jsp"/>
+   </action>
+   
+   <!-- 转仓单查询 -->
+	<action path="/changeStoreBillSearch" type="mediastore.web.action.ChangeStoreBillSearchAction" name="ChangeStoreBillForm" scope="request">
+    	<forward name="ChangeStoreBillSearch" path="/jsp/ChangeStoreBillSearch.jsp"/>
+   </action>
+   
+   <!-- 转仓明细查询 -->
+	<action path="/changeStoreItemsSearch" type="mediastore.web.action.ChangeStoreItemsSearchAction" name="ChangeStoreGoodsForm" scope="request">
+    	<forward name="ChangeStoreItemsSearch" path="/jsp/ChangeStoreItemsSearch.jsp"/>
+   </action>
+   
+   <!-- 估价差处理 -->
+	<action path="/evaPriceHandle" type="mediastore.web.action.EvaPriceHandleAction" name="GoodsImportGoodsInfo" scope="request">
+    	<forward name="EvaPriceHandle" path="/jsp/EvaPriceHandle.jsp"/>
+   </action>	
+   
+   <!-- 销售价格调整 -->
+	<action path="/changePrice" type="mediastore.web.action.ChangePriceAction" name="GoodsInfoForm" scope="request">
+    	<forward name="ChangePrice" path="/jsp/ChangePrice.jsp"/>
+   </action>	
+   
+   <!-- 资金借贷 -->
+	<action path="/otherToPay" type="mediastore.web.action.OtherToPayAction" name="OtherToPayForm" scope="request">
+    	<forward name="OtherToPayAdd" path="/jsp/OtherToPayAdd.jsp"/>
+   </action>	
+   
+   <!-- 其他应收应付 -->
+	<action path="/otherPaySearch" type="mediastore.web.action.OtherPaySearchAction" name="OtherToPayForm" scope="request">
+    	<forward name="OtherPaySearch" path="/jsp/OtherPaySearch.jsp"/>
+    	<forward name="OtherPayGroup" path="/jsp/OtherPayGroup.jsp"/>
+   </action>	
+   
+   <!-- 打印借款单 -->
+	<action path="/otherPayItemView" type="mediastore.web.action.OtherPayItemViewAction" name="mediastoreForm">
+    	<forward name="OtherPayItemView" path="/jsp/OtherPayItemView.jsp"/>
+   </action>
+   
+   <!-- 帐户记录查询 -->
+	<action path="/accessMoneySearch" type="mediastore.web.action.AccessMoneySearchAction" name="AccountForm" scope="request">
+    	<forward name="AccessMoneySearch" path="/jsp/AccessMoneySearch.jsp"/>
+   </action>	
+   
+   <!-- 帐户操作类型 -->
+	<action path="/accessType" type="mediastore.web.action.AccessTypeAction" name="mediastoreForm" >
+		<forward name="AccessType" path="/jsp/AccessType.jsp"/>
+	</action>	
+	
+   <!-- 帐户管理 -->
+	<action path="/accountManage" type="mediastore.web.action.AccountManageAction" name="AccountForm" scope="request">
+    	<forward name="AccountManage" path="/jsp/AccountManage.jsp"/>
+   </action>
+   
+   <!-- 商品流动表 -->
+	<action path="/goodsFlowSearch" type="mediastore.web.action.GoodsFlowSearchAction" name="mediastoreForm">
+    	<forward name="GoodsFlowSearch" path="/jsp/GoodsFlowSearch.jsp"/>
+    	<forward name="GoodsFlowExcel" path="/jsp/GoodsFlowExcel.jsp"/>
+   </action>
+   
+   <!-- 资金流动表 -->
+	<action path="/moneyFlowSearch" type="mediastore.web.action.MoneyFlowSearchAction" name="mediastoreForm">
+    	<forward name="MoneyFlowSearch" path="/jsp/MoneyFlowSearch.jsp"/>
+   </action>
+   
+   <!-- 库存预警 -->
+	<action path="/repertoryWarn" type="mediastore.web.action.RepertoryWarnAction" name="mediastoreForm">
+    	<forward name="RepertoryWarnEval" path="/jsp/RepertoryWarnEval.jsp"/>
+   </action>
+   
+   <!-- 毛利统计 -->
+	<action path="/liRunSearch" type="mediastore.web.action.LiRunSearchAction" name="mediastoreForm">
+    	<forward name="LiRunSearch" path="/jsp/LiRunSearch.jsp"/>
+   </action>
+   
+   <!-- 净利润计算 -->
+	<action path="/jingLiRun" type="mediastore.web.action.JingLiRunAction" name="mediastoreForm">
+    	<forward name="JingLiRun" path="/jsp/JingLiRun.jsp"/>
+   </action>
+   
+   <!-- 资产负债表 -->
+	<action path="/ziChanFuZhai" type="mediastore.web.action.ZiChanFuZhaiAction" name="mediastoreForm">
+    	<forward name="ZiChanFuZhai" path="/jsp/ZiChanFuZhai.jsp"/>
+   </action>
+   
+   <!-- 月销售情况 -->
+	<action path="/monthSell" type="mediastore.web.action.MonthSellAction" name="GoodsImportGoodsInfo" scope="request">
+    	<forward name="MonthSell" path="/jsp/MonthSell.jsp"/>
+   </action>
+   
+   <!-- 月价格变化情况 -->
+	<action path="/priceChange" type="mediastore.web.action.PriceChangeAction" name="PriceChangeForm" scope="request">
+    	<forward name="PriceChange" path="/jsp/PriceChange.jsp"/>
+   </action>
+   
+   <!-- 月利润变化情况 -->
+	<action path="/monthLiRun" type="mediastore.web.action.MonthLiRunAction" name="GoodsImportGoodsInfo" scope="request">
+    	<forward name="MonthLiRun" path="/jsp/MonthLiRun.jsp"/>
+   </action>
+  
+	<!-- 存取款 -->
+	<action path="/inputOutputMoney" type="mediastore.web.action.InputOutputMoneyAction" name="AccountForm" scope="request">
+    	<forward name="InputOutputMoney" path="/jsp/InputOutputMoney.jsp"/>
+    	<forward name="AccessMoneyResult" path="/jsp/AccessMoneyResult.jsp"/>
+   </action>
+   
+    <!-- 进货单撤单 -->
+	<action path="/importCancel" type="mediastore.web.action.ImportCancelAction" name="GoodsImportGoodsInfo" scope="request">
+    	<forward name="ImportCancel" path="/jsp/ImportCancel.jsp"/>
+   </action>	
+   
+   <!-- 销售单撤单 -->
+	<action path="/exportCancel" type="mediastore.web.action.ExportCancelAction" name="GoodsExportGoodsInfo" scope="request">
+    	<forward name="ExportCancel" path="/jsp/ExportCancel.jsp"/>
+   </action>
+   
+   <!-- 发票收开查询 -->
+	<action path="/faPiaoSearch" type="mediastore.web.action.FaPiaoSearchAction" name="ImportBillForm" scope="request">
+    	<forward name="FaPiaoSearch" path="/jsp/FaPiaoSearch.jsp"/>
+   </action>
+   
+   <!-- 存取款单打印 -->
+	<action path="/accessMoneyItemView" type="mediastore.web.action.AccessMoneyItemViewAction" name="mediastoreForm">
+    	<forward name="AccessMoneyItemView" path="/jsp/AccessMoneyItemView.jsp"/>
+   </action>
+   
+   <!-- 资本注入抽取单打印 -->
+	<action path="/inputOutputMoneyItemView" type="mediastore.web.action.InputOutputMoneyItemViewAction" name="mediastoreForm">
+    	<forward name="InputOutputMoneyItemView" path="/jsp/InputOutputMoneyItemView.jsp"/>
+   </action>
+   
+   <!-- 库存商品变更 -->
+	<action path="/kaiPing" type="mediastore.web.action.KaiPingAction" name="KaiPingForm" scope="request">
+    	<forward name="KaiPing" path="/jsp/KaiPing.jsp"/>
+   </action>
+   
+   <!--  库存商品变更打印 -->
+	<action path="/kaiPingItemsView" type="mediastore.web.action.KaiPingItemsViewAction" name="mediastoreForm">
+    	<forward name="KaiPingItemsView" path="/jsp/KaiPingItemsView.jsp"/>
+   </action>
+   
+   <!-- 发票收开查询 -->
+	<action path="/kaiPingSearch" type="mediastore.web.action.KaiPingSearchAction" name="KaiPingForm" scope="request">
+    	<forward name="KaiPingSearch" path="/jsp/KaiPingSearch.jsp"/>
+   </action>
+   
+    <!--  业务日报 -->
+	<action path="/yeWuDayReport" type="mediastore.web.action.YeWuDayReportAction" name="mediastoreForm">
+    	<forward name="YeWuDayReport" path="/jsp/YeWuDayReport.jsp"/>
+    	<forward name="YeWuDayReportPrint" path="/jsp/YeWuDayReportPrint.jsp"/>
+   </action>
+   	<!--  财务日报 -->
+	<action path="/caiWuDayReport" type="mediastore.web.action.CaiWuDayReportAction" name="mediastoreForm">
+    	<forward name="CaiWuDayReport" path="/jsp/CaiWuDayReport.jsp"/>
+    	<forward name="CaiWuDayReportPrint" path="/jsp/CaiWuDayReportPrint.jsp"/>
+   </action>
+   <!--  销售月报 -->
+	<action path="/sellMonthRep" type="mediastore.web.action.SellMonthRepAction" name="PriceChangeForm" scope="request">
+    	<forward name="SellMonthRep" path="/jsp/SellMonthRep.jsp"/>
+    	<forward name="SellMonthRepPrint" path="/jsp/SellMonthRepPrint.jsp"/>
+    	<forward name="SellMonthRepExcel" path="/jsp/SellMonthRepExcel.jsp"/>
+   </action>
+  </action-mappings>
+
+</struts-config>
+

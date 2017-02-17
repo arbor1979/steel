@@ -1,0 +1,123 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<metahttp-equiv="X-UA-Compatible"content="IE=EmulateIE7"> 
+<TITLE>天天阳光钢材进销存系统</TITLE>
+
+
+<script language="javascript" src="js/jquery.js"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<LINK href="images/ttygw.ico" rel="Shortcut Icon">
+<LINK href="images/ttygw.ico" rel=Bookmark>
+<SCRIPT language=javascript>
+function Login()
+{
+	
+	$.ajax({ 
+		  type:'POST', 
+		  url:"login.do", 
+		  data:{userName:encodeURIComponent(document.form1.userName.value),password:document.form1.password.value},
+		  dataType: 'text', 
+		  cache:false,
+		  async: true,
+		  success:function(data) 
+		  { 
+		  	
+			  if(data=='ok')
+			  {
+			  	if(window.name=='main' || 1==1)
+			  	{
+			  		location.href='login.do?action=suc';
+			  		
+			  	}
+				else
+			  		openNewWindow('login.do?action=suc');
+			  }
+			  else if(data.indexOf('注册码不正确')>=0)
+	  	  	  	document.write(data);
+			  else
+				alert(data);
+				
+			   
+			  	
+		  },
+		  error:function(XmlHttpRequest,textStatus, errorThrown)
+	  	  {
+			 alert('出错：'+errorThrown);
+	  	  }
+	});
+
+	return false;
+}
+function openNewWindow(strURL)
+{
+	
+	nWidth = screen.availWidth;
+	nHeight = screen.availHeight;
+    window.open(strURL,'main','top=0,left=0,location=no,directories=no,hotkeys=0,status=yes,menubar=no,scrollbars=yes,resizable=yes,width='+(screen.availWidth-10)+',height='+(screen.availHeight-25)+'\'');
+	window.opener=null;
+	window.open("", "_self", "");
+	window.close();
+}
+ </SCRIPT>
+</HEAD>
+
+<BODY background='images/bgall.gif' onLoad="form1.userName.focus();" >
+<table width=100% height=100% valign="center">
+<tr><td>
+<FORM name=form1 action="" method="post" onSubmit="return Login();">
+<table align="center"  background="images/loginbg.gif" border="0" cellspacing="6">
+  <tr> 
+    <td align="center" colSpan=3 bgcolor="#F2F2F2"><img src="images/topnew.gif" width="482" border="0" usemap="#Map">
+	  <BR>
+	  <iframe name="title" width=100% height=30 marginwidth=0 marginheight=0 frameborder=0 src="html\DeptName.htm"></iframe>
+	  <br>
+	    用 户 名：
+	    <INPUT type="text" class=bgg size=20 name='userName'>
+	      <BR>
+	      <BR>
+	    用户口令：
+	    <INPUT class=bgg type=password size=20 name='password'>
+	    <BR>
+	    <BR>
+		<br>
+	    <INPUT name=login type=submit class="bgg" value=用户登录>
+&nbsp;&nbsp;
+	    <INPUT name=reset type=reset class="bgg" value=重新填写>
+	    <BR>
+	    <BR>
+	    <BR>
+	  <div align="right">技术服务电话：0371-66871976&nbsp;&nbsp;</div><br>
+  </td>
+</TR>
+</table>
+
+ </FORM>
+ </td></tr>
+ <iframe name="down" width=0 height=0 marginwidth=0 marginheight=0 frameborder=0 src=""></iframe>
+<form name=form2 target="down" action="jsp\downloadreg.jsp">
+</form>
+<script language="javascript">
+ try
+ {
+ 	//document.write("<object ID='WebBrowser' WIDTH=0 HEIGHT=0 CLASSID='CLSID:8856F961-340A-11D0-A96B-00C04FD705A2'></object>"); 
+	//document.all.WebBrowser.ExecWB(8,1);
+	//ExcelApp = new ActiveXObject("Excel.Application");
+	//ExcelApp = new ActiveXObject("WScript.Shell");
+    
+ }catch(e)
+ {
+ 	//form2.submit();
+ 	//alert('将自动设置站点安全级别，出现下载提示时，点 [运行] 按钮');
+ }
+</script>
+</table>
+
+<map name="Map">
+<area shape="rect" coords="4,5,477,80" href="http://www.ttygw.net/" target="_blank">
+</map>
+</BODY>
+</HTML>

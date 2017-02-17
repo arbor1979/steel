@@ -1,0 +1,38 @@
+body { font: 9pt verdana, arial; color: black; background: white; }
+td   { font: 9pt verdana, arial; color: black; background: white; }
+th   { font: 9pt verdana, arial; color: black; background: red; }
+td.shineblue { background-color:#CCDDEC; }
+td.green   { background-color:#88DD77; }
+td.gray    { background-color:#666666; color:#ffffff; font-size: 11pt; font-weight:100; }
+span.caption { color:#1A4D78; text-decoration:none; font-size: 18pt; font-weight:500; }
+span.gray         { background-color:#666666; color:#ffffff; font-size: 11pt; font-weight:100; }
+span.grayselected { color:#CCDDEC; text-decoration:none; font-weight:100; }
+span.messages     { color:#ee6666; font-size: 10pt; font-weight:bold; }
+a.top             { text-decoration:none; }
+a.gray            { background-color:#666666; color:#ffffff; font-size: 11pt; }
+a.grayselected    { color:#CCDDEC; text-decoration:none; }
+a.gray:hover { color:#CCDDEC; }
+a.white		  { background-color:white; color:#ee6666; font-size: 10pt; }
+a.whiteselected    { color:#CCDDEC; text-decoration:none; }
+a.white:hover { color:#CCDDEC; }
+h1   { font: 10pt verdana, arial; font-weight:bold; margin-bottom:0px; }
+h2   { font: 10pt verdana, arial; margin-bottom:0px; }
+h3   { font: 10pt verdana, arial; text-decoration:underline; margin-bottom:0px; }
+
+table.box { background-color:#666666; border-width:1px; border-color:#666666;  }
+th.box    { font-size:10pt; font-weight:bold; color:white; background-color:#666666; text-align:left; padding:2px; }
+td.box    { background-color:#ffffff; padding:9px; }
+
+table.table {}
+tr.table    { }
+th.table    { background-color:#9CC8EE; font: 10pt verdana, arial; font-weight:bold; padding-left:3px; padding-right:3px; }
+td.table    { background-color:#ccffbb; padding-left:3px; padding-right:3px; }
+
+tr.tableHeaderRow  {}
+th.tableHeaderCell { background-color:#9CC8EE; font: 10pt verdana, arial; font-weight:bold; text-align:center; padding-left:3px; padding-right:3px; }
+tr.tableRowOdd     {}
+tr.tableRowEven    {}
+td.tableCell       { background-color:#E2F0FB; padding-left:3px; padding-right:3px; }
+
+th.tableEventLogCell { background-color:#9CC8EE; font: 10pt verdana, arial; font-weight:bold; text-align:left; padding-left:3px; padding-right:3px; }
+th.tableFlowCell     { background-color:#aaaaaa; font: 11pt verdana, arial; text-align:center; padding-left:3px; padding-right:3px; margin-bottom:10px; }

@@ -1,0 +1,18 @@
+body { 
+	font-family:ËÎÌו; 
+}
+
+p,td,select,pre,input,textarea{
+	font-family:"ËÎÌו";
+}
+
+.px14  {  font-size:14.8px;letter-spacing:2px;}
+.shadow{  filter: DropShadow(Color=#cccccc, OffX=3, OffY=3, Positive=135)}
+.input {  font-size: 12px;border-style: solid; border-color: #666666 #CCCCCC #CCCCCC #666666; height: 18px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;; background-color: #F3FAF4}
+.button {  font-size: 9pt;padding-top: 2px;border-color: #FFFFFF #CCCCCC #CCCCCC #FFFFFF; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; height: 22px}
+.px12 {  font-size: 12px}.px12line {  font-size: 12px; text-decoration: none}
+td {  font-size: 12px}
+td {  }
+a:link {  text-decoration: none}
+select {  font-size: 12px}
+input {  font-size: 12px}
