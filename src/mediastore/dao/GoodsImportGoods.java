@@ -56,6 +56,19 @@ public class GoodsImportGoods
             	throw new Exception("此单中已包含同一仓库编号为"+gif.getGoodsId()+"的商品");
             rs.close();
             
+            strSQL="select createPerson from TabGoodsImportInfo where confirmflage='0' and billid="+gif.getBillId()+" and deptid="+gif.getDeptid();
+            rs=stmt.executeQuery(strSQL);
+            if(rs.next())
+            {
+            	String person=rs.getString("createPerson").toLowerCase();
+            	String person1=gif.getCreatePerson().toLowerCase();
+            	if(!person.equals(person1))
+            		throw new Exception("无法添加，因此单创建人为"+person);
+            }
+            else
+            	throw new Exception("此单已不存在");
+            rs.close();
+            
         	strSQL = "insert into TabGoodsImportGoods( BillID, GoodsID, GoodsName,ImportNum, ImportAmount, ImportUnitPrice,"+
         	"CreatePerson, CreateTime, ConfirmFlage,storeid,deptid) values (" + gif.getBillId() + ", '" + 
         	StrUtility.replaceString(gif.getGoodsId(), "'", "''") + "', '" + StrUtility.replaceString(gif.getGoodsName(), "'", "''") +
@@ -172,7 +185,7 @@ public class GoodsImportGoods
             stmt = conn.createStatement();
             nRet = stmt.executeUpdate(strSQL);
             if(nRet != 1)
-                throw new Exception("删除入库记录失败");
+                throw new Exception("删除入库记录失败,单据状态已改变或者用户不一致");
         }
         catch(Exception e)
         {
@@ -232,7 +245,7 @@ public class GoodsImportGoods
             strSQL = "UPDATE TabGoodsImportGoods SET ImportNum="+geg.getImportNum()+",ImportAmount = " + geg.getImportAmount() + " WHERE id = " + geg.getId() + " and ConfirmFlage='0' and createPerson='" + StrUtility.replaceString(geg.getCreatePerson(), "'", "''") + "'";
             nRet=stmt.executeUpdate(strSQL);
             if(nRet!=1)
-            	throw new Exception("更新件数失败");
+            	throw new Exception("更新件数失败,单据状态已改变或者用户不一致");
             conn.commit();
         }
         catch(Exception e)
@@ -298,15 +311,17 @@ public class GoodsImportGoods
 	            if(geg.getImportAmount()<0 && kucun+geg.getImportAmount()<0)
 	            	throw new Exception("编号为"+geg.getGoodsId()+"的产品库存不足");
 	            
-	            strSQL = "UPDATE TabGoodsImportGoods SET ImportNum="+geg.getImportNum()+",ImportAmount = " + geg.getImportAmount() + " WHERE id = " + geg.getId() + " and ConfirmFlage='0' and createPerson='" + StrUtility.replaceString(geg.getCreatePerson(), "'", "''") + "'";
+	            strSQL = "UPDATE TabGoodsImportGoods SET ImportNum="+geg.getImportNum()+",ImportAmount = " + geg.getImportAmount() + " WHERE id = " + geg.getId() + " and ConfirmFlage='0'  and createPerson='" + StrUtility.replaceString(geg.getCreatePerson(), "'", "''") + "'";
 	            nRet=stmt.executeUpdate(strSQL);
 	            if(nRet!=1)
-	            	throw new Exception("更新入库数量失败");
+	            	throw new Exception("更新入库数量失败,单据状态已改变或者用户不一致");
 	        }
             else
             {
-            	strSQL = "UPDATE TabGoodsImportGoods SET ImportNum="+geg.getImportNum()+" WHERE id = " + geg.getId() + " and ConfirmFlage='0' and createPerson='" + StrUtility.replaceString(geg.getCreatePerson(), "'", "''") + "'";
+            	strSQL = "UPDATE TabGoodsImportGoods SET ImportNum="+geg.getImportNum()+" WHERE id = " + geg.getId() + " and ConfirmFlage='0'  and createPerson='" + StrUtility.replaceString(geg.getCreatePerson(), "'", "''") + "'";
 	            nRet=stmt.executeUpdate(strSQL);
+	            if(nRet!=1)
+	            	throw new Exception("更新入库数量失败,单据状态已改变或者用户不一致");
             }
             conn.commit();
         }
@@ -370,7 +385,7 @@ public class GoodsImportGoods
             " and ConfirmFlage='0' and createperson='" + gif.getCreatePerson() + "'";
             int i=stmt.executeUpdate(strSQL);
             if(i!=1)
-            	throw new Exception("更新入库数量失败");
+            	throw new Exception("更新入库数量失败,单据状态已改变或者用户不一致");
         }
         catch(Exception e)
         {
@@ -402,10 +417,10 @@ public class GoodsImportGoods
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
             strSQL = "UPDATE TabGoodsImportGoods SET ImportUnitPrice = " + gif.getImportUnitPrice() + " WHERE id = " + gif.getId() +
-            " and ConfirmFlage='0' and createPerson='" + gif.getCreatePerson() + "'";
+            " and ConfirmFlage='0'  and createPerson='" + gif.getCreatePerson() + "'";
             int i=stmt.executeUpdate(strSQL);
             if(i!=1)
-            	throw new Exception("更新入库单价失败");
+            	throw new Exception("更新入库单价失败,单据状态已改变或者用户不一致");
         }
         catch(Exception e)
         {
@@ -446,10 +461,10 @@ public class GoodsImportGoods
             if(unitPrice<0)
             	throw new Exception("价格不能为负数");
             strSQL = "UPDATE TabGoodsImportGoods SET ImportUnitPrice = " + unitPrice + " WHERE id = " + gif.getId() +
-            " and ConfirmFlage='0' and createPerson='" + gif.getCreatePerson() + "'";
+            " and ConfirmFlage='0'  and createPerson='" + gif.getCreatePerson() + "'";
             int i=stmt.executeUpdate(strSQL);
             if(i!=1)
-            	throw new Exception("更新入库单价失败");
+            	throw new Exception("更新入库单价失败,单据状态已改变或者用户不一致");
         }
         catch(Exception e)
         {
@@ -481,10 +496,10 @@ public class GoodsImportGoods
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
             strSQL = "UPDATE TabGoodsImportGoods SET memo ='" + gif.getMemo() + "' WHERE id = " + gif.getId() +
-            " and ConfirmFlage='0' and createPerson='" + gif.getCreatePerson() + "'";
+            " and ConfirmFlage='0'  and createPerson='" + gif.getCreatePerson() + "'";
             int i=stmt.executeUpdate(strSQL);
             if(i!=1)
-            	throw new Exception("更新备注失败");
+            	throw new Exception("更新备注失败,单据状态已改变或者用户不一致");
         }
         catch(Exception e)
         {
@@ -503,8 +518,9 @@ public class GoodsImportGoods
         }
     }
    
-    public int deleteAllGoods(GoodsImportGoodsInfo gif)
+    public int deleteAllGoods(GoodsImportGoodsInfo gif) throws Exception
     {
+    	
         int nRet;
         nRet = 0;
         DBConnection dbc = null;
@@ -515,14 +531,17 @@ public class GoodsImportGoods
             dbc = new DBConnection();
             conn = dbc.getDBConnection();
             String strSQL = "DELETE FROM TabGoodsImportGoods WHERE BillID=" + gif.getBillId() + " and CreatePerson='"+gif.getCreatePerson()+"' and confirmFlage='0'";
-            stmt = conn.createStatement();
-            nRet = stmt.executeUpdate(strSQL);
-            if(nRet<=0)
-            	throw new Exception("删除失败");
+           // System.out.print(strSQL);
+           stmt = conn.createStatement();
+           nRet = stmt.executeUpdate(strSQL);
+          
+           if(nRet<=0)
+        	   throw new Exception("删除失败,单据状态已改变或者用户不一致");
         }
         catch(Exception e)
         {
             e.printStackTrace();
+            throw e;
         }
         finally
         {

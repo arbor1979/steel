@@ -480,8 +480,10 @@ function showModalWindow(factid,form,kind)
          <%
          	DateFormat dt1=DateFormat.getDateTimeInstance();
          	java.util.Date dt2=new Date();
-         	if(dt2.after(dt1.parse(ibf.getPayLimTime()+" 23:59:59")))
-         		ibf.setPayLimTime(oConvert.FormDateShort(dt2));
+         	if(ibf.getPayLimTime().equals("1900-01-01"))
+         		ibf.setPayLimTime("");
+         	//if(ibf.getPayLimTime().length()>0 && dt2.after(dt1.parse(ibf.getPayLimTime()+" 23:59:59")))
+         	//ibf.setPayLimTime(oConvert.FormDateShort(dt2));
          %>
 		<input type=text name='payLimTime' size="15" class="none" value="<%=ibf.getPayLimTime() %>" onChange="UpdateBill();">
 		<img src="./images/cal.gif" width="16" height="16" border="0" style="cursor:hand;" align="absmiddle" alt="弹出日历菜单"  onClick="Calendar_paylimtime();">&nbsp; 

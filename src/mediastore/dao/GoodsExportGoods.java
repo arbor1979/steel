@@ -124,7 +124,21 @@ public class GoodsExportGoods
             if(rs.next())
             	throw new Exception("此单中已包含同一仓库编号为"+geg.getGoodsId()+"的商品");
             rs.close();
-                        
+            strSQL="select salesperson from TabGoodsExportInfo where confirmFlage='0' and billid="+geg.getBillId()+" and deptid="+geg.getDeptid();
+            rs=stmt.executeQuery(strSQL);
+            if(rs.next())
+            {
+            	String person=rs.getString("salesperson").toLowerCase();
+            	String person1=geg.getSalesPerson().toLowerCase();
+            	if(!person.equals(person1))
+            	{
+            		throw new Exception("无法添加，因此单创建人为"+person);
+            	}
+            }
+            else
+            	throw new Exception("此单据状态已改变");
+            rs.close();
+            
             GoodsInfo gi=new GoodsInfo();
             double avgprice=gi.getAvgInPrice(conn,geg.getGoodsId(), geg.getDeptid());
             
@@ -177,7 +191,7 @@ public class GoodsExportGoods
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
             conn.setAutoCommit(false);
-            strSQL = "select * from TabGoodsExportGoods WHERE id = " + geg.getId()+ " and salesPerson='" + geg.getSalesPerson() + "'";
+            strSQL = "select * from TabGoodsExportGoods WHERE id = " + geg.getId()+ " and confirmFlage='0' and salesPerson='" + geg.getSalesPerson() + "'";
             rs=stmt.executeQuery(strSQL); 
             if(rs.next())
             {
@@ -188,7 +202,7 @@ public class GoodsExportGoods
             	geg.setAvgprice(rs.getDouble("importAvgPrice"));
             }
             else
-            	throw new Exception("找不到记录");
+            	throw new Exception("找不到记录,或操作员不一致");
             rs.close();
             GoodsInfo gi=new GoodsInfo();
             GoodsInfoForm g=gi.getGoodsInfoByGoodsId(geg.getGoodsId());
@@ -280,7 +294,7 @@ public class GoodsExportGoods
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
             conn.setAutoCommit(false);
-            strSQL = "select * from TabGoodsExportGoods WHERE id = " + geg.getId()+ " and salesPerson='" + geg.getSalesPerson() + "'";
+            strSQL = "select * from TabGoodsExportGoods WHERE id = " + geg.getId()+ " and confirmFlage='0' and salesPerson='" + geg.getSalesPerson() + "'";
             rs=stmt.executeQuery(strSQL); 
             if(rs.next())
             {
@@ -291,7 +305,7 @@ public class GoodsExportGoods
             	oldnum=rs.getInt("exportNum");
             }
             else
-            	throw new Exception("找不到记录");
+            	throw new Exception("找不到记录,或操作员不一致");
             rs.close();
             GoodsInfo gi=new GoodsInfo();
             GoodsInfoForm g=gi.getGoodsInfoByGoodsId(geg.getGoodsId());
@@ -398,7 +412,7 @@ public class GoodsExportGoods
             double oldAmount=0;
             conn.setAutoCommit(false);
             geg.setExportAmount(geg.getExportAmount()*geg.getKind());
-            strSQL = "select * from TabGoodsExportGoods WHERE id = " + geg.getId()+ " and salesPerson='" + geg.getSalesPerson() + "'";
+            strSQL = "select * from TabGoodsExportGoods WHERE id = " + geg.getId()+ " and confirmFlage='0' and salesPerson='" + geg.getSalesPerson() + "'";
             rs=stmt.executeQuery(strSQL); 
             if(rs.next())
             {
@@ -410,7 +424,7 @@ public class GoodsExportGoods
             	newAmount=oConvert.getRound(geg.getExportAmount()-oldAmount,3);
             }
             else
-            	throw new Exception("找不到记录");
+            	throw new Exception("找不到记录,或操作员不一致");
             rs.close();
             GoodsInfo gi=new GoodsInfo();
             GoodsInfoForm g=gi.getGoodsInfoByGoodsId(geg.getGoodsId());
@@ -496,10 +510,10 @@ public class GoodsExportGoods
             dbc = new DBConnection();
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
-            strSQL = "UPDATE TabGoodsExportGoods SET ExportUnitPrice = " + geg.getExportUnitPrice() + " WHERE id = " + geg.getId() + " and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "'";
+            strSQL = "UPDATE TabGoodsExportGoods SET ExportUnitPrice = " + geg.getExportUnitPrice() + " WHERE id = " + geg.getId() + " and confirmFlage='0' and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "'";
             nRet=stmt.executeUpdate(strSQL);
             if(nRet!=1)
-            	throw new Exception("更新出库单价失败");
+            	throw new Exception("更新失败，单据状态已改变,或操作员不一致");
         }
         catch(Exception e)
         {
@@ -531,10 +545,10 @@ public class GoodsExportGoods
             dbc = new DBConnection();
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
-            strSQL = "UPDATE TabGoodsExportGoods SET jiagong = " + geg.getJiagong() + " WHERE id = " + geg.getId() + " and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "'";
+            strSQL = "UPDATE TabGoodsExportGoods SET jiagong = " + geg.getJiagong() + " WHERE id = " + geg.getId() + " and confirmFlage='0' and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "'";
             nRet=stmt.executeUpdate(strSQL);
             if(nRet!=1)
-            	throw new Exception("更新加工费失败");
+            	throw new Exception("更新加工费失败，单据状态已改变,或操作员不一致");
         }
         catch(Exception e)
         {
@@ -566,10 +580,10 @@ public class GoodsExportGoods
             dbc = new DBConnection();
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
-            strSQL = "UPDATE TabGoodsExportGoods SET memo ='" + geg.getMemo() + "' WHERE id = " + geg.getId() + " and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "'";
+            strSQL = "UPDATE TabGoodsExportGoods SET memo ='" + geg.getMemo() + "' WHERE id = " + geg.getId() + " and confirmFlage='0' and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "'";
             nRet=stmt.executeUpdate(strSQL);
             if(nRet!=1)
-            	throw new Exception("更新备注失败");
+            	throw new Exception("更新备注失败，单据状态已改变,或操作员不一致");
         }
         catch(Exception e)
         {
@@ -645,7 +659,7 @@ public class GoodsExportGoods
             strSQL = "select * FROM TabGoodsExportGoods WHERE id=" + geg.getId() + " and confirmFlage='0' and salesPerson='" + geg.getSalesPerson() + "'";
             rs=stmt.executeQuery(strSQL);
             if(!rs.next())
-            	throw new Exception("找不到此记录，或单据状态已改变");
+            	throw new Exception("单据状态已改变,或操作员不一致");
             else
             {
             	geg.setGoodsId(rs.getString("goodsid"));
@@ -858,13 +872,15 @@ public class GoodsExportGoods
             
             if(geg.getBillId()>0)
             {
-            	strSQL = "delete from TabGoodsExportInfo where billid=" + geg.getBillId() + " and confirmFlage='0' and deptid="+geg.getDeptid();
+            	strSQL = "delete from TabGoodsExportInfo where billid=" + geg.getBillId() + " and confirmFlage='0' and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "' and deptid="+geg.getDeptid();
                 nRet = stmt.executeUpdate(strSQL);
                 if(nRet<1)
-                	throw new Exception("删除失败");
+                	throw new Exception("删除失败，单据状态已改变，或操作员不一致");
             }
-            strSQL = "DELETE FROM TabGoodsExportGoods WHERE billid=" + geg.getBillId() + " and confirmFlage='0' and deptid="+geg.getDeptid();
+            strSQL = "DELETE FROM TabGoodsExportGoods WHERE billid=" + geg.getBillId() + " and confirmFlage='0' and salesperson='" + StrUtility.replaceString(geg.getSalesPerson(), "'", "''") + "' and deptid="+geg.getDeptid();
             nRet = stmt.executeUpdate(strSQL);
+            if(nRet<1)
+            	throw new Exception("删除失败，单据状态已改变，或操作员不一致");
             conn.commit();
         }
         catch(Exception e)

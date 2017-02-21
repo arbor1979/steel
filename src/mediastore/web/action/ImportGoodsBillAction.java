@@ -109,7 +109,9 @@ public class ImportGoodsBillAction extends AbstractAction
 	    	else if(param.equals("delall"))
 	    	{
 		        gig.deleteAllGoods(gif);
+		        
 	    	}
+	    	
 			int maxBillId = giinfo.getTempBillIDNum(ctx.getUserName(),ctx.getDeptid(),gif.getKind());
 			ImportBillForm ibf=giinfo.getImportBillById(maxBillId,ctx.getDeptid());
 	        List goodsList = gig.getGoodsList(maxBillId,ctx.getDeptid());
