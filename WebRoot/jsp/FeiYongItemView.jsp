@@ -10,7 +10,7 @@
 <title>天天阳光钢材进销存系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
 <link rel="stylesheet" href="css/stylePrint.css" type="text/css">
-
+<script language="javascript" src="js/LodopFuncs.js"></script>
 </head>
 <body >
 <%
@@ -23,7 +23,7 @@
 	
 %>
 <br>
-<br>
+<div id="main">
 <h2 align="center" style="font-family: 楷体_GB2312;"><%=ibf.getShortname() %>【<%=(ibf.getKind()==1?"其他收入":"费用支出") %>单】</h2>
 <table width="100%" align="cneter">
 <tr >
@@ -92,37 +92,33 @@
 	<td align=right>录入时间：<%=ibf.getCreateTime().substring(0,10)%></td>
 	</tr>
 	</table>
-	<%
-if(ifprint.equals("1") || ifprint.equals("2") || ifprint.equals("3"))
-{
-%>
+	</div>
 <script>
-	function printbill()
+	var LODOP;
+	function printBill()
 	{
-	//printtr.style.display = "none";
-		document.write("<object ID='WebBrowser' WIDTH=0 HEIGHT=0 CLASSID='CLSID:8856F961-340A-11D0-A96B-00C04FD705A2'></object>"); 
-		WebBrowser.ExecWB(7,1); 
-	//window.history.back(-1);
-	//printtr.style.display = "";
-	//window.opener=null; 
-	//window.close(); 
-	
+		LODOP=getLodop();  
+		LODOP.PRINT_INITA(0,0,522,333,"收入与费用单");	
+		//LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_全页");
+		LODOP.SET_PRINT_PAGESIZE(0,1950,950,"195");
+		LODOP.ADD_PRINT_HTM("5%","5%","90%","90%",document.getElementById('main').innerHTML);
+		LODOP.PREVIEW();
 	}
-	printbill();
-
-<%  
-	if(ifprint.equals("1"))
-		out.print("window.navigate('feiYongBillInput.do?kind="+ibf.getKind()+"');");
-	else if(ifprint.equals("2"))
-		out.print("window.close();");
-	else if(ifprint.equals("3"))
-		out.print("window.navigate('payYunFei.do');");
-%>
+<%if(ifprint.equals("1")){%>
+	window.onload=function(){
+		printBill();	
+	};
+<%}%>
 </script>
-<%}else{ %>
-<p align="center"><input type="button" name="printtr" value=" 打印 " onclick="window.navigate('feiYongItemView.do?billId=<%=ibf.getBillId() %>&deptid=<%=ibf.getDeptid() %>&kind=<%=ibf.getKind() %>&ifprint=2');">
-&nbsp;<input type="button" name="close" value=" 关闭 " onclick="window.close();">
-<%} %>
+<p align="center"><input type="button" name="printtr" value=" 打印 " onclick="printBill();">
+&nbsp;<input type="button" name="close" value=" 返回" onclick="
+<%if(ifprint.equals("1"))
+		out.print("window.location='feiYongBillInput.do?kind="+ibf.getKind()+"';");
+	else 
+		out.print("window.close();");
+	
+%>">
+
 </body>
 
 </html>

@@ -188,7 +188,7 @@ public class GoodsStoreInfo
             	strSQL = "UPDATE TabGoodsRepertory SET RepertoryAmount=RepertoryAmount-(" + rs.getString("changeamount") + 
             	"),RepertoryNum=RepertoryNum-(" + rs.getString("changeNum") + 
             	") WHERE GoodsID='" +rs.getString("goodsid")+ "' and storeid="+fromstore;
-            	nRet=stmt1.executeUpdate(strSQL);	
+            	nRet=dbc.executeUpdate(stmt1,strSQL);	
             	if(nRet != 1)
                 {
                     nRet = -1;
@@ -206,7 +206,7 @@ public class GoodsStoreInfo
             		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,RepertoryNum,storeid,avgprice) values('"+rs.getString("goodsid")+
             		"',"+rs.getString("changeamount")+","+rs.getString("changeNum")+","+tostore+","+rs.getDouble("changeUnitPrice")+")";
             	}
-            	nRet=stmt1.executeUpdate(strSQL);	
+            	nRet=dbc.executeUpdate(stmt1,strSQL);	
             	if(nRet != 1)
                 {
                     nRet = -1;
@@ -631,7 +631,7 @@ public class GoodsStoreInfo
             	strSQL = "UPDATE TabGoodsRepertory SET RepertoryAmount=RepertoryAmount-(" + rs.getString("amount") + 
             	"),RepertoryNum=RepertoryNum-(" + rs.getString("Num") + 
             	") WHERE GoodsID='" +rs.getString("goodsid")+ "' and storeid="+rs.getInt("storeid");
-            	nRet=stmt1.executeUpdate(strSQL);	
+            	nRet=dbc.executeUpdate(stmt1,strSQL);	
             	if(nRet != 1)
                 {
                     nRet = -1;
@@ -658,7 +658,7 @@ public class GoodsStoreInfo
             		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,RepertoryNum,storeid,avgprice) values('"+rs.getString("goodsid")+
             		"',"+rs.getString("amount")+","+rs.getString("Num")+","+rs.getInt("storeid")+","+avgprice+")";
             	}
-            	nRet=stmt1.executeUpdate(strSQL);	
+            	nRet=dbc.executeUpdate(stmt1,strSQL);	
             	if(nRet != 1)
                 {
                     nRet = -1;

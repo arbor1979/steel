@@ -77,7 +77,7 @@ function orderList(order,old)
 		 <%
 		if(ctx.isIfview()) {
 		%>
-		<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+		<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
              <td  align="right" > 
@@ -110,7 +110,7 @@ function orderList(order,old)
     	
 	<font color=#215385>查询结果(共 <b><%=kcList.size() %></b> 种商品，红色表示库存不足商品)
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	<tr bgcolor=#CAE4F4>
 		<th><a class="tablehead" href="javascript:orderList('goodsname','<%=orderby%>');">商品名称
 		<%if(orderby.equals("goodsname")) out.print("↓"); if(orderby.equals("goodsname desc")) out.print("↑");%></th>

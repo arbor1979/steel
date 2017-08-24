@@ -118,7 +118,7 @@ function orderList(order,old)
     	<input type="hidden" name="curpage"  value="1">
     	<input type="hidden" name="orderby"  value="<%=orderby %>">
     	<input type="hidden" name="searchbutton" value="²éÑ¯">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right"> 
                 <b>µ¥ºÅ:</b>
@@ -239,7 +239,7 @@ function orderList(order,old)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<%
 			if(ibsri.allnum>0)
 			{

@@ -91,13 +91,13 @@ if(ifprint.equals("1") || ifprint.equals("2"))
 	if(ibf.getKind()==18 || ibf.getKind()==19)
 		kind=1;
 	if(ifprint.equals("1"))
-		out.print("window.navigate('otherToPay.do?type="+kind+"&factory="+ibf.getFactory()+"');");
+		out.print("window.location='otherToPay.do?type="+kind+"&factory="+ibf.getFactory()+"';");
 	else
 		out.print("window.close();");
 %>
 </script>
 <%}else{ %>
-<p align="center"><input type="button" name="printtr" value=" ´òÓ¡ " onclick="window.navigate('otherPayItemView.do?billId=<%=ibf.getBillid() %>&deptid=<%=ibf.getDeptid() %>&ifprint=2');">
+<p align="center"><input type="button" name="printtr" value=" ´òÓ¡ " onclick="window.location='otherPayItemView.do?billId=<%=ibf.getBillid() %>&deptid=<%=ibf.getDeptid() %>&ifprint=2';">
 &nbsp;<input type="button" name="close" value=" ¹Ø±Õ " onclick="window.close();">
 <%} %>
 </body>

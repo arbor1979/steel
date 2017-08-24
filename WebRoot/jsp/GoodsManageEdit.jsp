@@ -136,7 +136,7 @@ function CheckInput()
     	<input type="hidden" name="param"  value="save">
     	<input type="hidden" name="oldGoodsId"  value='<%=gif.getGoodsId() %>'>
     	<input type="hidden" name="goodsType"  value='<%=gif.getGoodsType()%>'>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  
 	    <tr>
            <td  align="right"><b>产品类别:</b></td> 
@@ -195,7 +195,7 @@ function CheckInput()
 		</TABLE>
 		
 		 <p align="center"><input name=searchbutton type="submit" value=" 保存 ">&nbsp;
-		 <input name=searchbutton type="button" onclick="window.navigate('goodsManage.do');" value=" 返回 "></p>
+		 <input name=searchbutton type="button" onclick="window.location='goodsManage.do';" value=" 返回 "></p>
 		 </form>
         </td>
     </tr>

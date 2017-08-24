@@ -176,7 +176,7 @@ public class GoodsImportInfo
             	else
             		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,RepertoryNum,storeid,avgprice) values('"+rs.getString("goodsid")+
             		"',"+rs.getString("importamount")+","+rs.getString("importNum")+","+rs.getString("storeid")+","+avgprice+")";
-            	nRet=stmt1.executeUpdate(strSQL);
+            	nRet=dbc.executeUpdate(stmt1,strSQL);
             	if(nRet != 1)
                     throw new Exception("更新库存表错误");
             	
@@ -1200,7 +1200,7 @@ public class GoodsImportInfo
             	else
             		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,storeid,avgprice) values('"+rs.getString("goodsid")+
             		"',"+amount+","+rs.getString("storeid")+","+avgprice+")";
-            	nRet=stmt1.executeUpdate(strSQL);
+            	nRet=dbc.executeUpdate(stmt1,strSQL);
             	if(nRet != 1)
                     throw new Exception("更新库存表错误");
             	

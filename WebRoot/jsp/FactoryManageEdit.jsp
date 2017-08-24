@@ -118,7 +118,7 @@ function addUserRec()
     	<font color=#215385><b>往来单位信息</b></font>
     	<IMG src="images/line1.gif" border=0 width=900>
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr>
             <td  align="right" width=15%> 
                 <b>*企业名称:</b>
@@ -256,7 +256,7 @@ function addUserRec()
           <input type="hidden" name="townid">
           <input type="hidden" name="id" value=<%=fi.getId() %>>
 	</TABLE>
-	<p align=center><input name=addrec type=submit value=" 保存 ">&nbsp;<input name=back type=button value=" 返回 " onclick="window.navigate('factoryManage.do');"></p>
+	<p align=center><input name=addrec type=submit value=" 保存 ">&nbsp;<input name=back type=button value=" 返回 " onclick="window.location='factoryManage.do';"></p>
 	</form>
     </table>  
     </td>

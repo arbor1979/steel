@@ -74,7 +74,7 @@ function verify(form){
      <form name="form1" method="post" action="sellMonthRep.do" onSubmit="javascript:return verify(this);">
     	<input type="hidden" name="searchbutton" value="²éÑ¯"> 	
     	<input type="hidden" name="ifprint" value="0">	
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
 		<TD align="center">
@@ -144,7 +144,7 @@ function verify(form){
 		double totalV[]=new double[caizhi.length+1];
     %>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 			<tr bgcolor="#C2CEDC">
 			<th><%=(kind.equals("month")?"ÔÂ":"ÈÕ") %></th>
 		<%

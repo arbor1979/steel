@@ -12,7 +12,7 @@
 <script language="JavaScript">
 function SubmitThis(deptid)
 {
-	window.navigate('ziChanFuZhai.do?deptid='+deptid);
+	window.location='ziChanFuZhai.do?deptid='+deptid;
 }
 </script>
 </head>
@@ -70,7 +70,7 @@ function SubmitThis(deptid)
 %>
      <form name="form1" method="post" action="ziChanFuZhai.do">
     	<input type="hidden" name="searchbutton" value="查询"> 	
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
           
@@ -124,7 +124,7 @@ function SubmitThis(deptid)
    
 	</form>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 			<th ></th>
 			<th colspan=2>资产类(元)</th>

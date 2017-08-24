@@ -27,7 +27,7 @@ function disableall()
     	<center><font color=#215385><b>供应商或客户信息</b></font></center>
     	<IMG src="images/line1.gif" border=0 width=100%>
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr>
             <td  align="right" width=15%> 
                 <b>企业名称:</b>

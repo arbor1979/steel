@@ -37,7 +37,7 @@ function ConfirmPay(kind,billid,deptid,totalprice,realmoney,acctype,fktype)
 			if(!confirm('去零金额 '+odd+' 小于 -5 元！是否继续？'))
 				return;
 		}
-		window.navigate("payYunFei.do?param=pay&kind="+kind+"&billid="+billid+"&deptid="+deptid+"&realmoney="+realmoney+"&fkType="+fktype+"&acctype="+acctype);
+		window.location="payYunFei.do?param=pay&kind="+kind+"&billid="+billid+"&deptid="+deptid+"&realmoney="+realmoney+"&fkType="+fktype+"&acctype="+acctype;
 	}
 }
 function viewDetail(url)
@@ -123,7 +123,7 @@ function setTotalPrice(kind,text,price,yuchu,acctype,fk)
 	<br>
 	<input type="hidden" name="orderby"  value="<%=orderby %>">
 		<input type="hidden" name="param"  value="list">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" width=150> 
                 <b>车牌号(车主):</b>
@@ -131,7 +131,7 @@ function setTotalPrice(kind,text,price,yuchu,acctype,fk)
             <td>
             	<input class=none type="text" name="zhujima" value="<%=zhujima %>" readonly> 
             </td>
-            <td><input type="button" value=" 返回 " onclick="window.navigate('payYunFei.do');"></td>
+            <td><input type="button" value=" 返回 " onclick="window.location='payYunFei.do';"></td>
          </tr>
      </TABLE>
      </form>
@@ -139,7 +139,7 @@ function setTotalPrice(kind,text,price,yuchu,acctype,fk)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -207,7 +207,7 @@ function setTotalPrice(kind,text,price,yuchu,acctype,fk)
 	</td>
         </tr>
        <tr> 
-          <td valign="middle" align="center" height=30><input type="button" value=" 返回 " onclick="window.navigate('payYunFei.do');"></td>
+          <td valign="middle" align="center" height=30><input type="button" value=" 返回 " onclick="window.location='payYunFei.do';"></td>
         </tr> 
 
       </table>

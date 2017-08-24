@@ -110,7 +110,7 @@ function verify1()
 			out.print("<input type='hidden' name='acc"+(i+1)+"' value="+accmoney[i]+">");
 		}
 	%>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
           <tr>
             <td  align="right" width=80> 
                 <b>*×ª³öÕÊ»§:</b>

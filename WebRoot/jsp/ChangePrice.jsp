@@ -110,7 +110,7 @@ function orderList(order,old)
           <input type="hidden" name="edeptid"  value="">
           <input type="hidden" name="esellprice"  value="">
           <input type="hidden" name="param"  value="">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  
 	  <tr>
             
@@ -193,7 +193,7 @@ function orderList(order,old)
 	</div>
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="5" cellspacing="1" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('a.goodsid','<%=orderby%>');">²úÆ·±àºÅ</a><%if(orderby.equals("a.goodsid")) out.print("¡ý"); if(orderby.equals("a.goodsid desc")) out.print("¡ü");%></th>
 		<th><a class="tablehead" href="javascript:orderList('goodstypename','<%=orderby%>');">Ãû³Æ</a><%if(orderby.equals("goodstypename")) out.print("¡ý"); if(orderby.equals("goodstypename desc")) out.print("¡ü");%></th>
@@ -218,7 +218,9 @@ function orderList(order,old)
 		%>
        <tr 
        <%if((index%2)==1)
+       {
        		out.print("bgcolor=\"#CAE4F4\"");
+       	}
        	%>>  
 	        <td width="80"><%=tmpInfo.getGoodsId()%></td>  
 	        <td><%=tmpInfo.getGoodsTypeName()%></td>
@@ -226,18 +228,24 @@ function orderList(order,old)
 			<td align="center"><%=tmpInfo.getCaizhi()%></td>
 			<td align="center"><%=tmpInfo.getChandi()%></td>
 			<td align="center"><%=tmpInfo.getStoreName()%></td>
-			<%if(ctx.isIfview()){%><td align='center'><%= tmpInfo.getShortname() %></td><%} %>
+			
+			<%if(ctx.isIfview())
+			{%>
+				<td align='center'><%= tmpInfo.getShortname() %></td>
+			<%} %>
 			<td align="right"><%=tmpInfo.getCurRepertory()%></td>
 			<td align="right"><%=nf.format(oConvert.getRound(tmpInfo.getAvgprice(),2))%></td>
 			<td align="right"><%=nf.format(oConvert.getRound(tmpInfo.getCurRepertory()*tmpInfo.getAvgprice(),2))%></td>
 			<%if(ctx.getDeptid()==tmpInfo.getDeptid()){ %>
 			<td align="right"><input type="text" name="sellprice" size=10 value="<%=tmpInfo.getPurchaseUnitPrice()%>" onkeyup="InputFloat(this);" onfocus="this.select();"
-			onChange="if(updateSellPrice('<%=tmpInfo.getGoodsId()%>',<%=tmpInfo.getDeptid()%>,this.value)=='1'){this.value='<%= tmpInfo.getPurchaseUnitPrice()%>'}"</td>
+			onChange="if(updateSellPrice('<%=tmpInfo.getGoodsId()%>',<%=tmpInfo.getDeptid()%>,this.value)=='1'){this.value='<%= tmpInfo.getPurchaseUnitPrice()%>'}"></td>
 			<td align="right"><input type="text" name="sellmoney" size=10 value="<%=oConvert.getRound(tmpInfo.getCurRepertory()*tmpInfo.getPurchaseUnitPrice(),2)%>" onkeyup="InputFloat(this);" onfocus="this.select();"
-			onChange="if(updateSellPrice('<%=tmpInfo.getGoodsId()%>',<%=tmpInfo.getDeptid()%>,Number(this.value)/<%=tmpInfo.getCurRepertory()%>)=='1'){this.value='<%= oConvert.getRound(tmpInfo.getCurRepertory()*tmpInfo.getPurchaseUnitPrice(),2)%>'}"</td>
+			onChange="if(updateSellPrice('<%=tmpInfo.getGoodsId()%>',<%=tmpInfo.getDeptid()%>,Number(this.value)/Number(<%=tmpInfo.getCurRepertory()%>))=='1'){this.value='<%= oConvert.getRound(tmpInfo.getCurRepertory()*tmpInfo.getPurchaseUnitPrice(),2)%>'}"></td>
+			
 			<%}else{ %>
 			<td align="right"><%=tmpInfo.getPurchaseUnitPrice()%></td>
-			<td align="right"><%=nf.format(oConvert.getRound(tmpInfo.getCurRepertory()*tmpInfo.getPurchaseUnitPrice(),2))%></td><%} %>
+			<td align="right"><%=nf.format(oConvert.getRound(tmpInfo.getCurRepertory()*tmpInfo.getPurchaseUnitPrice(),2))%></td>
+			<%} %>
        </tr>
 <%
 	    }

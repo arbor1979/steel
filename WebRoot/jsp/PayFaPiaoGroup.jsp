@@ -96,11 +96,11 @@ function viewDetail(url)
 	<input type="hidden" name="kind"  value="<%=kind %>">
 	<input type="hidden" name="curpage"  value="<%=ys.curpage %>">
 	<input type="hidden" name="orderby"  value="<%=orderby %>">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
 	  	<td align="center">
-		<input type="radio" name="kind" value="0" <%=(kind==0?"checked":"") %> onclick="window.navigate('payFaPiao.do?kind=0')"><b>发票应开</b>&nbsp;&nbsp;
-		<input type="radio" name="kind" value="1" <%=(kind==1?"checked":"") %>  onclick="window.navigate('payFaPiao.do?kind=1')"><b>发票应收</b>
+		<input type="radio" name="kind" value="0" <%=(kind==0?"checked":"") %> onclick="window.location='payFaPiao.do?kind=0'"><b>发票应开</b>&nbsp;&nbsp;
+		<input type="radio" name="kind" value="1" <%=(kind==1?"checked":"") %>  onclick="window.location='payFaPiao.do?kind=1'"><b>发票应收</b>
 		</td>
         	<%if(ctx.isIfview()){ %>
              <td  align="right" width=80> 
@@ -136,7 +136,7 @@ function viewDetail(url)
 
 	<IMG src="images/line1.gif" width=900 border=0>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('b.name','<%=orderby%>');"><%=(kind==1?"客户":"供应商") %>名称<%if(orderby.equals("b.name")) out.print("↓"); if(orderby.equals("b.name desc")) out.print("↑");%></th>
@@ -165,7 +165,7 @@ function viewDetail(url)
 		        <td align='right' ><%= tmpInfo.getTotalNum() %></td>
 				<td align='right'><%= nf.format(tmpInfo.getTotalPrice()) %></td>
 				<td align='center' width=80><%=tmpInfo.getAllcount()%></td>
-				<td align='center'><input type="button" value="单据明细" onclick="window.navigate('payFaPiao.do?param=list&kind=<%=kind %>&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>');">
+				<td align='center'><input type="button" value="单据明细" onclick="window.location='payFaPiao.do?param=list&kind=<%=kind %>&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>';">
 			
 			</td>
 			
@@ -188,7 +188,7 @@ function viewDetail(url)
 		        <td align='right' ><%= tmpInfo.getTotalNum() %></td>
 				<td align='right'><%= nf.format(tmpInfo.getTotalPrice()) %></td>
 				<td align='center' width=80><%=tmpInfo.getAllcount()%></td>
-				<td align='center'><input type="button" value="单据明细" onclick="window.navigate('payFaPiao.do?param=list&kind=<%=kind %>&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>');">
+				<td align='center'><input type="button" value="单据明细" onclick="window.location='payFaPiao.do?param=list&kind=<%=kind %>&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>';">
 			
 			</td>
 			

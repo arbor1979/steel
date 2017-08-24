@@ -33,6 +33,7 @@
     <form-bean name="AccountForm" type="mediastore.web.form.AccountForm" />
     <form-bean name="PriceChangeForm" type="mediastore.web.form.PriceChangeForm" />
     <form-bean name="KaiPingForm" type="mediastore.web.form.KaiPingForm" />
+    <form-bean name="FileUploadForm" type="mediastore.web.form.FileUploadForm" />
   </form-beans>
   
   <global-forwards type="org.apache.struts.action.ActionForward">
@@ -467,6 +468,10 @@
     	<forward name="SellMonthRep" path="/jsp/SellMonthRep.jsp"/>
     	<forward name="SellMonthRepPrint" path="/jsp/SellMonthRepPrint.jsp"/>
     	<forward name="SellMonthRepExcel" path="/jsp/SellMonthRepExcel.jsp"/>
+   </action>
+   	<!--  ÍùÀ´ÕÊµ¼Èë -->
+	<action path="/initBillImport" type="mediastore.web.action.InitBillImportAction" name="FileUploadForm" scope="request">
+    	<forward name="InitBillImport" path="/jsp/InitBillImport.jsp"/>
    </action>
   </action-mappings>
 

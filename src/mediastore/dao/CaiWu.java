@@ -1,13 +1,19 @@
 package mediastore.dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import mediastore.common.DBConnection;
 import mediastore.user.TruckManager;
@@ -3100,6 +3106,207 @@ public class CaiWu {
         }
         return ibsri;
     }
-	
+	public void insertInitNeedPay(List<HashMap> dataList,int deptid,String username,String importtype) throws Exception
+    {
+        DBConnection dbc = null;
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        String strSQL = null;
+        int retNum=0;
+        try
+        {
+            dbc = new DBConnection();
+            conn = dbc.getDBConnection();
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            for(HashMap hm : dataList)
+            {
+            	if(hm==null)continue;
+            	String line=String.valueOf(hm.get("行数"));
+            	String supplyName="";
+            	String supplyTel="";
+            	String supplyLink="";
+            	String importtime="";
+            	String supplytype="";
+            	if(importtype.equals("import"))
+            	{
+            		supplyName=String.valueOf(hm.get("供应商"));
+            		BigDecimal bd = new BigDecimal(String.valueOf(hm.get("供应商电话"))); 
+            		supplyTel = bd.toPlainString();
+            		supplyLink=String.valueOf(hm.get("供应商联系人"));
+            		importtime=String.valueOf(hm.get("进货时间"));
+            		supplytype="1000";
+            	}
+            	else if(importtype.equals("export"))
+            	{
+            		supplyName=String.valueOf(hm.get("客户"));
+            		BigDecimal bd = new BigDecimal(String.valueOf(hm.get("客户电话"))); 
+            		supplyTel = bd.toPlainString();
+            		supplyLink=String.valueOf(hm.get("客户联系人"));
+            		importtime=String.valueOf(hm.get("销售时间"));
+            		supplytype="0010";
+            	}
+            	if(importtype.equals("import") || importtype.equals("export"))
+            	{
+	            	double num=Double.valueOf((String) hm.get("数量（吨）"));
+	            	double jine=Double.valueOf((String) hm.get("金额（元）"));
+	            	
+	            	SimpleDateFormat sdf1 = new SimpleDateFormat ("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK);
+	            	Date date=sdf1.parse(importtime);
+	            	DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+	            	importtime=format1.format(date);
+	            	String beizhu="";
+	            	if(hm.get("备注")!=null)
+	            		beizhu=String.valueOf(hm.get("备注"));
+	            	if(supplyName!=null && supplyName.length()>0)
+	            	{
+	            		strSQL="select id from tabfactory where name='"+supplyName+"'";
+	            		rs = stmt.executeQuery(strSQL);
+	            		int supplyid=0;
+	            		if(!rs.next())
+	            		{
+	            			String zhujima="";
+	            			for(int i=0;i<supplyName.length();i++)
+	                        {
+	                        	String wd=supplyName.substring(i,i+1);
+	                        	strSQL = "select * from hzpy where hz='" + wd+"'";
+	                        	rs = stmt.executeQuery(strSQL);
+	                        	if(rs.next())
+	                        		zhujima=zhujima+rs.getString("py");
+	                        }
+	            			strSQL="insert into tabfactory (name,linkman,tel,kind,zhujima,deptid,townid,address,yewuyuan) values('"+supplyName+"','"+supplyLink+"','"+supplyTel+"','"+supplytype+"','"+zhujima+"','"+deptid+"','1114','','0')";
+	            			stmt.executeUpdate(strSQL,Statement.RETURN_GENERATED_KEYS);
+	            			rs = stmt.getGeneratedKeys();    
+	                        if (rs.next()) {    
+	                            supplyid = rs.getInt(1);    
+	                        } 
+	            		}
+	            		else
+	            			supplyid=rs.getInt("id");
+	            		if(supplyid>0)
+	                    {
+	            			int billid=0;
+	            			if(importtype.equals("import"))
+	            			{
+		            			strSQL = "select imbillid from TabDepartInfo where id="+deptid;
+		                        rs=stmt.executeQuery(strSQL);
+		                        if(rs.next())
+		                        	billid=rs.getInt("imbillid")+1;
+		                        else
+		                        	throw new Exception("分公司不存在");
+		                        strSQL = "update TabDepartInfo set imbillid=imbillid+1 where id="+deptid;
+		                        int i=stmt.executeUpdate(strSQL);
+		                        if(i!=1)
+		                        	throw new Exception("更新入库单号失败");
+		                    	strSQL="insert into tabgoodsimportinfo (billid,createperson,totalnum,totalprice,importtime,factory,confirmflage,deptid,kind,memo,fktype,payLimTime,fptype) values"+
+		                        	"('"+billid+"','"+username+"','"+num+"','"+jine+"','"+importtime+"','"+supplyid+"','1','"+deptid+"','1','"+beizhu+"','1','"+importtime+"','1')";
+		                    	int row=stmt.executeUpdate(strSQL);
+		                    	if(row==0)
+		                    		throw new Exception("第"+line+"行,插入进货单失败");
+	            			}
+	            			else
+	            			{
+	            				strSQL = "select exbillid from TabDepartInfo where id="+deptid;
+		                        rs=stmt.executeQuery(strSQL);
+		                        if(rs.next())
+		                        	billid=rs.getInt("exbillid")+1;
+		                        else
+		                        	throw new Exception("分公司不存在");
+		                        strSQL = "update TabDepartInfo set exbillid=exbillid+1 where id="+deptid;
+		                        int i=stmt.executeUpdate(strSQL);
+		                        if(i!=1)
+		                        	throw new Exception("更新出库单号失败");
+		                    	strSQL="insert into tabgoodsexportinfo (billid,salesperson,totalnum,totalprice,exporttime,factory,confirmflage,deptid,kind,memo,fktype,payLimTime,fptype,tihuo) values"+
+		                        	"('"+billid+"','"+username+"','"+num+"','"+jine+"','"+importtime+"','"+supplyid+"','1','"+deptid+"','1','"+beizhu+"','1','"+importtime+"','1','自提')";
+		                    	int row=stmt.executeUpdate(strSQL);
+		                    	if(row==0)
+		                    		throw new Exception("第"+line+"行，插入销售单失败");
+	            			}
+	                    }
+	            		else
+	            			throw new Exception("第"+line+"行,供应商 或客户名称 "+supplyName+" 创建失败");
+	            			
+	            	}
+	            	else
+	            		throw new Exception("第"+line+"行,供应商或客户名称不能为空");
+            	}
+            	else if(importtype.equals("store"))
+            	{
+            		String storeName=String.valueOf(hm.get("仓库名"));
+            		String goodsId=String.valueOf(hm.get("产品编号"));
+            		double num=Double.valueOf((String) hm.get("数量（吨）"));
+	            	double price=Double.valueOf((String) hm.get("成本价（元）"));
+	            	String beizhu="";
+	            	if(hm.get("备注")!=null)
+	            		beizhu=String.valueOf(hm.get("备注"));
+	            	if(storeName!=null && storeName.length()>0)
+	            	{
+	            		strSQL="select id from tabstore where name='"+storeName+"'";
+	            		rs = stmt.executeQuery(strSQL);
+	            		int storeid=0;
+	            		if(!rs.next())
+	            		{
+	            			strSQL="insert into tabstore (name,address,linkman,tel,mobile,deptid,ifdel) values('"+storeName+"','','','','','"+deptid+"',0)";
+	            			stmt.executeUpdate(strSQL,Statement.RETURN_GENERATED_KEYS);
+	            			rs = stmt.getGeneratedKeys();    
+	                        if (rs.next()) {    
+	                        	storeid = rs.getInt(1);    
+	                        } 
+	            		}
+	            		else
+	            			storeid=rs.getInt("id");
+	            		if(storeid>0)
+	                    {
+	            			int shuliang=0;
+	            			strSQL = "select xishu from TabGoodsInfo where goodsid='"+goodsId+"'";
+	                        rs=stmt.executeQuery(strSQL);
+	                        if(!rs.next())
+	                        	throw new Exception("第"+line+"行，产品库中不存在编号为"+goodsId+"的产品");
+	                        else
+	                        {
+	                        	if(rs.getDouble("xishu")>0)
+	                        	shuliang=(int)(num/rs.getDouble("xishu"));
+	                        }
+	                        strSQL="select * from tabgoodsrepertory where goodsid='"+goodsId+"' and storeid='"+storeid+"'";
+	                        rs = stmt.executeQuery(strSQL);
+	                        if(rs.next())
+	                        	throw new Exception("第"+line+"行，仓库中已存在编号为 "+goodsId+" 的产品");
+	                    	strSQL="insert into tabgoodsrepertory (goodsid,repertoryAmount,storeid,avgprice,repertoryNum,memo) values"+
+	                        	"('"+goodsId+"','"+num+"','"+storeid+"','"+price+"','"+shuliang+"','"+beizhu+"')";
+	                    	int row=stmt.executeUpdate(strSQL);
+	                    	if(row==0)
+	                    		throw new Exception("第"+line+"行"+goodsId+",插入库存失败");
+
+	            			
+	                    }
+	            		else
+	            			throw new Exception("第"+line+"行,仓库名 "+supplyName+" 创建失败");
+	            	}
+            	}
+            }
+            conn.commit();
+           
+        }
+        catch(Exception e)
+        {
+        	conn.rollback();
+        	throw e;
+        }
+        finally
+        {
+            try
+            {
+                if(rs != null)
+                    rs.close();
+                if(stmt != null)
+                    stmt.close();
+                if(conn != null)
+                    dbc.closeDBConnection(conn);
+            }
+            catch(SQLException e) { }
+        }
+    
+    }
 	
 }

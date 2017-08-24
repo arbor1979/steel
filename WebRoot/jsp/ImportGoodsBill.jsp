@@ -53,7 +53,7 @@ function updateImportJianNum(id, newexportamount,kind)
 		alert("件数必须大于0");
 		return '1';	
 	}
-	window.navigate("importGoodsBill.do?param=updateJianNum&kind="+kind+"&id="+id+"&importJianNum="+newexportamount);
+	window.location="importGoodsBill.do?param=updateJianNum&kind="+kind+"&id="+id+"&importJianNum="+newexportamount;
 }
 function updateImportNum(id, newexportamount,kind)
 {
@@ -74,7 +74,7 @@ function updateImportNum(id, newexportamount,kind)
 		alert("数量必须大于等于0");
 		return '1';	
 	}
-	window.navigate("importGoodsBill.do?param=updateNum&kind="+kind+"&id="+id+"&importNum="+newexportamount);
+	window.location="importGoodsBill.do?param=updateNum&kind="+kind+"&id="+id+"&importNum="+newexportamount;
 }
 function updateImportAmount(id, newexportamount,kind)
 {
@@ -95,7 +95,7 @@ function updateImportAmount(id, newexportamount,kind)
 		alert("重量必须大于0");
 		return '1';	
 	}
-	window.navigate("importGoodsBill.do?param=updateAmount&kind="+kind+"&id="+id+"&importAmount="+newexportamount);
+	window.location="importGoodsBill.do?param=updateAmount&kind="+kind+"&id="+id+"&importAmount="+newexportamount;
 }
 function updateImportPrice(id, newimportprice,kind)
 {
@@ -113,7 +113,7 @@ function updateImportPrice(id, newimportprice,kind)
 	}
 	else
 	{
-		window.navigate("importGoodsBill.do?param=updatePrice&kind="+kind+"&id="+id+"&importUnitPrice="+newimportprice);
+		window.location="importGoodsBill.do?param=updatePrice&kind="+kind+"&id="+id+"&importUnitPrice="+newimportprice;
 		
 	}
 }
@@ -133,13 +133,13 @@ function updateImportMoney(id, newimportprice,kind)
 	}
 	else
 	{
-		window.navigate("importGoodsBill.do?param=updateMoney&kind="+kind+"&id="+id+"&importMoney="+newimportprice);
+		window.location="importGoodsBill.do?param=updateMoney&kind="+kind+"&id="+id+"&importMoney="+newimportprice;
 		
 	}
 }
 function updateMemo(id, newimportprice,kind)
 {
-	window.navigate("importGoodsBill.do?param=updateMemo&kind="+kind+"&id="+id+"&memo="+newimportprice);	
+	window.location="importGoodsBill.do?param=updateMemo&kind="+kind+"&id="+id+"&memo="+newimportprice;	
 }
 function deleteAllGoods(billId,kind)
 {
@@ -156,7 +156,7 @@ function deleteAllGoods(billId,kind)
 	}
 	if(confirm("确定要清空该货物列表吗？")) 
 	{
-		window.navigate("importGoodsBill.do?param=delall&kind="+kind+"&billId="+billId);
+		window.location="importGoodsBill.do?param=delall&kind="+kind+"&billId="+billId;
 	}
 }
 
@@ -164,7 +164,7 @@ function deleteATempImportGoods(id,kind)
 {
 	if(confirm("确定要删除该货物吗？")) 
 	{
-		window.navigate("importGoodsBill.do?param=del&kind="+kind+"&id="+id);
+		window.location="importGoodsBill.do?param=del&kind="+kind+"&id="+id;
 	}
 }
 
@@ -303,6 +303,7 @@ function showModalWindow(factid,form,kind)
 {	
 	window.showModalDialog('goodsSelect2.do?factid='+factid+'&kind='+kind,form,'dialogWidth:700px;dialogHeight:500px');
 }
+
 </script>
 </head>
 <%
@@ -371,7 +372,7 @@ function showModalWindow(factid,form,kind)
 	<input type="hidden" name="param" value="submit">
 	<input type="hidden" name="kind" value="<%=kind %>">
 	<input type="hidden" name="ieva" value="<%=ibf.getIeva() %>">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
           <tr>
           	<td  align="right" > 
                 <b>*供应商:</b>
@@ -390,7 +391,7 @@ function showModalWindow(factid,form,kind)
 			<%
 				}
 			%>
-            	</SELECT><input class=none type="text" name="zhujima" value="<%=igbfb.getZhujima() %>" size=5 onChange="window.navigate('importGoodsBill.do?kind=<%=kind %>&zhujima='+this.value);">(助记码,如"易通"为"yt")
+            	</SELECT><input class=none type="text" name="zhujima" value="<%=igbfb.getZhujima() %>" size=5 onChange="window.location='importGoodsBill.do?kind=<%=kind %>&zhujima='+this.value;">(助记码,如"易通"为"yt")
             </td>
             <td  align="right" > 
                 <b>*发票类型:</b>
@@ -465,7 +466,7 @@ function showModalWindow(factid,form,kind)
 	</TABLE>
 	<font color=#215385><b>货物列表</b></font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -546,7 +547,7 @@ function showModalWindow(factid,form,kind)
 	</TABLE>
 	</form>
 	
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" > 
                 <b>单号:</b>

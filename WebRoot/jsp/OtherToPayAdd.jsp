@@ -135,11 +135,11 @@ function gotoPageByN(n)
 	<form name="form2" method="post" action="otherToPay.do" onsubmit="return verify();">
 	<input type="hidden" name="param" value="submit">
 	<p align=center></p>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 		<tr>
 			<td colspan=2 align=center>
-			<input type="radio" name="type" value="0" <%=(kind==0?"checked":"") %> onclick="window.navigate('otherToPay.do?type=0')"><b>其他应收款</b>&nbsp;&nbsp;
-	<input type="radio" name="type" value="1" <%=(kind==1?"checked":"") %>  onclick="window.navigate('otherToPay.do?type=1')"><b>其他应付款</b>
+			<input type="radio" name="type" value="0" <%=(kind==0?"checked":"") %> onclick="window.location='otherToPay.do?type=0'"><b>其他应收款</b>&nbsp;&nbsp;
+	<input type="radio" name="type" value="1" <%=(kind==1?"checked":"") %>  onclick="window.location='otherToPay.do?type=1'"><b>其他应付款</b>
 			</td>
 			
 		
@@ -160,7 +160,7 @@ function gotoPageByN(n)
 			<%
 			}
 			%>
-            	</SELECT><input class=none type="text" name="zhujima" value="<%=zhujima %>" size=5 onChange="window.navigate('otherToPay.do?zhujima='+this.value);">(助记码)
+            	</SELECT><input class=none type="text" name="zhujima" value="<%=zhujima %>" size=5 onChange="window.location='otherToPay.do?zhujima='+this.value;">(助记码)
            </td>
            <td  align="right" > 
                 <b>*操作类型:</b>
@@ -223,7 +223,7 @@ function gotoPageByN(n)
     	out.print(ys.allmoney);
 	%></b> 元）</font>
 	<IMG src="images/line1.gif" width=900 border=0>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>

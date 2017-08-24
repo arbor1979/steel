@@ -103,7 +103,7 @@ function addUserRec()
     	<font color=#215385><b>±‡º≠≤÷ø‚–≈œ¢</b></font>
     	<IMG src="images/line1.gif" border=0 width=900>
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr>
             <td  align="right" width=15%> 
                 <b>*√˚≥∆:</b>

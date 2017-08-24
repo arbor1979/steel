@@ -655,7 +655,7 @@ public class FeiYongInput
             dbc = new DBConnection();
             conn = dbc.getDBConnection();
             stmt = conn.createStatement();
-            strSQL = "SELECT BillID FROM TabFeiYongInfo where confirmflage='1' and kind="+kind+" Order by BillID desc";
+            strSQL = "SELECT top 100 BillID FROM TabFeiYongInfo where confirmflage='1' and kind="+kind+" Order by BillID desc";
             String billIdStr;
             for(rs = stmt.executeQuery(strSQL); rs.next(); billIdList.add(billIdStr))
                 billIdStr = String.valueOf(rs.getInt(1));

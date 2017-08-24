@@ -19,7 +19,7 @@ function delYeWuYuan(id)
 {
 	if(confirm('是否删除此分公司？'))
 	{
-		window.navigate('departManage.do?param=del&id='+id);
+		window.location='departManage.do?param=del&id='+id;
 	}
 }
 
@@ -66,7 +66,7 @@ function delYeWuYuan(id)
 %>
 	<form name="form2" method="post" action="departManage.do?" >
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" > 
                 <b>名称:</b>
@@ -88,7 +88,7 @@ function delYeWuYuan(id)
             </td>
             <td >
             <input name=search type=submit value="查询">&nbsp;
-            <input name=new type=button value="新增" onclick="window.navigate('departManage.do?param=add');">
+            <input name=new type=button value="新增" onclick="window.location='departManage.do?param=add';">
             </td>
           </tr>
 	</TABLE>
@@ -97,7 +97,7 @@ function delYeWuYuan(id)
     	
 	<font color=#215385>分公司列表 (共 <b><%=userList.size()%></b> 个)</font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th>编号</th>
 		<th>名称</th>
@@ -124,7 +124,7 @@ function delYeWuYuan(id)
 	        <td align=center><%= tmpUserInfo.getTel() %></td>
 	        <td align=center><%= tmpUserInfo.getLinkman() %></td>
 	        
-	        <td align=center><input type="button" value="修改" onclick="window.navigate('departManage.do?param=edit&id=<%= tmpUserInfo.getId() %>');">
+	        <td align=center><input type="button" value="修改" onclick="window.location='departManage.do?param=edit&id=<%= tmpUserInfo.getId() %>';">
 	        <%if(tmpUserInfo.getId()>1){ %><input type="button" value="删除" onclick="delYeWuYuan(<%= tmpUserInfo.getId() %>);"><%} %>
 	        </td>
 	        </tr>

@@ -22,7 +22,7 @@ function addType()
 
 function updateGoodsType(id, newgoodstypename,classid,kind)
 {
-	//window.navigate("feiYongTypeManage.do?param=edit&id="+id+"&typename="+newgoodstypename+"&classid="+classid+"&kind="+kind);
+	//window.location="feiYongTypeManage.do?param=edit&id="+id+"&typename="+newgoodstypename+"&classid="+classid+"&kind="+kind;
 	$.ajax({ 
 		  type:'POST', 
 		  url:"feiYongTypeManage.do?param=edit&id="+id+"&classid="+classid+"&kind="+kind, 
@@ -56,7 +56,7 @@ function deleteGoodsType(goodstype,classid,kind)
 {
 	if(confirm("确定要删除该货物类型吗？"))
 	{
-		window.navigate("feiYongTypeManage.do?param=del&id="+goodstype+"&classid="+classid+"&kind="+kind);
+		window.location="feiYongTypeManage.do?param=del&id="+goodstype+"&classid="+classid+"&kind="+kind;
 	}
 }
 </script>
@@ -108,7 +108,7 @@ FeiYongTypeForm tmpclass;
 %>
 
 <form name="form1" method="post" action="feiYongTypeManage.do" onSubmit="return addType()">
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 <tr>
 	<td align="center">
 	<font color=#215385>子类名称</font>
@@ -117,7 +117,7 @@ FeiYongTypeForm tmpclass;
 	<input type="hidden" name="kind"  value="<%=kind %>">
 	<input type="hidden" name="param"  value="add">
 	<input name=addclass type=submit value=" 添加 ">&nbsp;&nbsp;
-	<input type=button value=" 返回 " onClick="window.navigate('feiYongClassManage.do');">
+	<input type=button value=" 返回 " onClick="window.location='feiYongClassManage.do';">
 	</td>
 </tr>
 </TABLE>
@@ -126,7 +126,7 @@ FeiYongTypeForm tmpclass;
 <font color=#215385>子类列表 (共 <b><%=typeList.size()%></b> 个)</font>
 <IMG src="images/line1.gif" border=0 width=900>
 <br>
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 
 		<tr bgcolor="#C2CEDC">
 		<td align=center ><b>子类编码</b></td>
@@ -177,7 +177,7 @@ FeiYongTypeForm tmpclass;
 	</td>
         </tr>
         <tr> 
-          <td valign="middle" align="center"><br><br><input type=button value=" 返回 " onClick="window.navigate('feiYongClassManage.do?kind=<%=kind %>');"><br></td>
+          <td valign="middle" align="center"><br><br><input type=button value=" 返回 " onClick="window.location='feiYongClassManage.do?kind=<%=kind %>';"><br></td>
         </tr>
 
       </table>

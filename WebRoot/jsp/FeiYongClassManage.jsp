@@ -107,11 +107,11 @@ function deleteGoodsClass(goodsclass,kind)
 
 <form name="form1" method="post" action="feiYongClassManage.do"  onSubmit="return addClass();">
 <br>
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 <tr>
 	<td align="center">
-	<input type="radio" name="kind" value="1" <%=(kind.equals("1")?"checked":"") %> onclick="window.navigate('feiYongClassManage.do?kind=1')"><b>收入</b>&nbsp;&nbsp;
-	<input type="radio" name="kind" value="-1" <%=(kind.equals("-1")?"checked":"") %>  onclick="window.navigate('feiYongClassManage.do?kind=-1')"><b>开支</b>
+	<input type="radio" name="kind" value="1" <%=(kind.equals("1")?"checked":"") %> onclick="window.location='feiYongClassManage.do?kind=1'"><b>收入</b>&nbsp;&nbsp;
+	<input type="radio" name="kind" value="-1" <%=(kind.equals("-1")?"checked":"") %>  onclick="window.location='feiYongClassManage.do?kind=-1'"><b>开支</b>
 	<td align="left">
 	<font color=#215385>大类名称</font>
 	<input type=text name='classname' size="18" class="none">
@@ -126,7 +126,7 @@ function deleteGoodsClass(goodsclass,kind)
 <font color=#215385><b>大类列表 (总数<%=classList.size()%>个)</b></font>
 <IMG src="images/line1.gif" border=0 width=900>
 <br>
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 
 		<tr bgcolor="#C2CEDC">
 		<td align=center ><b>大类编码</b></td>
@@ -155,7 +155,7 @@ function deleteGoodsClass(goodsclass,kind)
 					}
 				%>
 			</td>
-			<td align=center><input type="button" value=" 进入 " onclick="window.navigate('feiYongTypeManage.do?classid=<%=tmp.getId() %>&kind=<%=kind %>');"></td>
+			<td align=center><input type="button" value=" 进入 " onclick="window.location='feiYongTypeManage.do?classid=<%=tmp.getId() %>&kind=<%=kind %>';"></td>
 		</tr>
 		<%
 			}//for

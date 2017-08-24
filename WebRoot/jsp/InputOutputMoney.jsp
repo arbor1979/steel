@@ -124,7 +124,7 @@ function verify3()
 			out.print("<input type='hidden' name='acc"+tmp.getId()+"' value="+tmp.getJine()+">");
 		}
 	%>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
           <tr>
             <td  align="right" width=80> 
                 <b>*注入帐户:</b>
@@ -169,7 +169,7 @@ function verify3()
 			out.print("<input type='hidden' name='acc"+tmp.getId()+"' value="+tmp.getJine()+">");
 		}
 	%>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
           <tr>
             <td  align="right" width=80> 
                 <b>*抽取帐户:</b>

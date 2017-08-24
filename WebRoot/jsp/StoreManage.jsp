@@ -20,7 +20,7 @@ function delYeWuYuan(id)
 {
 	if(confirm('是否删除此仓库？'))
 	{
-		window.navigate('storeManage.do?param=del&id='+id);
+		window.location='storeManage.do?param=del&id='+id;
 	}
 }
 
@@ -68,7 +68,7 @@ function delYeWuYuan(id)
              %>
 	<form name="form2" method="post" action="storeManage.do" >
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" > 
                 <b>名称:</b>
@@ -118,7 +118,7 @@ function delYeWuYuan(id)
             %>
             <td >
             <input name=search type=submit value="查询">&nbsp;
-            <input name=new type=button value="新增" onclick="window.navigate('storeManage.do?param=add');">
+            <input name=new type=button value="新增" onclick="window.location='storeManage.do?param=add';">
             </td>
           </tr>
 	</TABLE>
@@ -127,7 +127,7 @@ function delYeWuYuan(id)
     	
 	<font color=#215385><b>仓库列表</b>(共 <b><%=deptList.size()%></b> 个)</font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th>编号</th>
 		<%
@@ -163,7 +163,7 @@ function delYeWuYuan(id)
 	        <td align=center><%= tmpUserInfo.getLinkman() %></td>
 	        <td align=center  width=90>
 	        <%if(ctx.getDeptid()==tmpUserInfo.getDeptid() || ctx.getDeptid()==0){ %>
-	        <input type="button" value="修改" onclick="window.navigate('storeManage.do?param=edit&id=<%= tmpUserInfo.getId() %>');">
+	        <input type="button" value="修改" onclick="window.location='storeManage.do?param=edit&id=<%= tmpUserInfo.getId() %>';">
 	        <input type="button" value="删除" onclick="delYeWuYuan(<%= tmpUserInfo.getId() %>);">
 	        <%} %></td>
 	        </tr>

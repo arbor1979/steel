@@ -3,8 +3,10 @@
 <%@ page import="mediastore.util.oConvert;"%>
 </html>
 <head>
+<base target="_self">
 <title>产品选择</title>
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="js/jquery-1.8.2.min.js"></script>
 <style>
 <!--
 body {
@@ -23,25 +25,49 @@ function orderList(order,old)
 	form1.orderby.value=order;
 	form1.submit();
 }
-function cc()  
+function cc(content)  
 {    
-	var e = event.srcElement;
-	var r =e.createTextRange();    
-	r.moveStart('character',e.value.length);    
-	r.collapse(true);    
-	r.select();  
+	//$("#goodsId").val("").focus().val(content); 
+	$("#goodsId").css("display","inline").val(content);//赋值
+moveEnd($("#goodsId").get(0));//移动光标至末尾，且切换selection的位置
+function moveEnd(obj){
+            obj.focus(); 
+            var len = obj.value.length; 
+            if (document.selection) { 
+                var sel = obj.createTextRange(); 
+                sel.moveStart('character',len); //设置开头的位置
+                sel.collapse(); 
+                sel.select(); 
+            } else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') { 
+                obj.selectionStart = obj.selectionEnd = len; 
+            } 
+        } 
 }
 function selectgoods(goodsid,storeid)
 {
-	var pform = dialogArguments; 
+	var	pform=window.dialogArguments;
+	if(typeof(pform)=='undefined')
+		pform=window.opener.form1;
 	pform.goodsId.value=goodsid;
     pform.storeId.value=storeid;
     pform.submit();
     window.close();
     
 }
+var last;
+function postform(event,oldvalue){//.input为你的输入框
+       last = event.timeStamp;
+       //利用event的timeStamp来标记时间，这样每次的keyup事件都会修改last的值，注意last必需为全局变量
+       setTimeout(function(){    //设时延迟0.5s执行
+            if(last-event.timeStamp==0)
+            {
+            	if($("#goodsId").val()!=oldvalue)
+            	 	form1.submit();     
+            }
+        },500);
+}
+window.name = "curWindow";
 </script>
-<base target="_self">
 </head>
 
 <%
@@ -54,12 +80,12 @@ function selectgoods(goodsid,storeid)
 %>
 <body onload="form1.goodsId.focus();">
 
-<form action="goodsSelect2.do" method="post" name="form1">
+<form action="goodsSelect2.do" method="post" name="form1" target="curWindow">
 <input type="hidden" name="factid" value="<%=factid %>">
 <input type="hidden" name="kind" value="<%=kind %>">
 <input type="hidden" name="orderby" value="<%=orderby %>">
 <input type="hidden" name="storeid" value="<%=gif.getStoreid() %>">
-&nbsp;&nbsp;商品编号：<input type="text" name="goodsId" size=20 value="<%=gif.getGoodsId() %>" onkeyup="if(this.value!='<%=gif.getGoodsId() %>')form1.submit();" onfocus="cc();">
+&nbsp;&nbsp;商品编号：<input type="text" id="goodsId" name="goodsId" onkeyup="postform(event,'<%=gif.getGoodsId() %>');" size=20 value="<%=gif.getGoodsId() %>" onfocus="cc('<%=gif.getGoodsId() %>');">
 
 <table width="100%" align="center" bordercolor="#000000" border=1 cellpadding="3" cellspacing="0" style="border-collapse:collapse">
 	<tr bgcolor="#C2CEDC">
@@ -85,7 +111,7 @@ function selectgoods(goodsid,storeid)
 				{
 			      	tmpInfo = (GoodsInfoForm)gsri.rslist.get(index);
 		%>
-       <tr onMouseOver=bgColor='#CAE4F4' onMouseOut=bgColor='#FFFFFF' onDblClick="selectgoods('<%=tmpInfo.getGoodsId()%>',<%=tmpInfo.getStoreid()%>);" title="双击鼠标选择此商品">  
+       <tr onMouseOver="style.backgroundColor='#CAE4F4'" onMouseOut="style.backgroundColor='#FFFFFF'" onDblClick="selectgoods('<%=tmpInfo.getGoodsId()%>',<%=tmpInfo.getStoreid()%>);" title="双击鼠标选择此商品">  
 	        <td width="80"><%=tmpInfo.getGoodsId()%></td>  
 	        <td><%=tmpInfo.getGoodsTypeName()%></td>
    			<td align="center"><%=tmpInfo.getCaizhi()%></td>

@@ -396,7 +396,7 @@ function showModalWindow(factid,form,kind)
 	<input type="hidden" name="param" value="submit">
 	<input type="hidden" name="obj4numbercheck" value="">
 	<input type="hidden" name="kind"  value="<%=kind%>">    	
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	 <tr>
           	<td  align="right" > 
                 <b>*客户名称:</b>
@@ -522,7 +522,7 @@ function showModalWindow(factid,form,kind)
 	
 	<font color=#215385><b>货物列表</b></font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -610,7 +610,7 @@ function showModalWindow(factid,form,kind)
 	        %>
 	</TABLE>
 	</form>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 
 	  <tr>
             <td  align="right" > 

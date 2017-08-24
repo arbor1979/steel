@@ -11,7 +11,7 @@
 function confirmDel(id)
 {
 	if(confirm('是否确认删除此操作员？'))
-		window.navigate('userManage.do?param=del&id='+id);
+		window.location='userManage.do?param=del&id='+id;
 }
 </script>
 </head>
@@ -58,7 +58,7 @@ function confirmDel(id)
 <p align="center">
 <%if(ctx.isIfview()){ %>
 所属分公司：
-	<select name="deptid" onChange="window.navigate('userManage.do?deptid='+this.value+'');">
+	<select name="deptid" onChange="window.location='userManage.do?deptid='+this.value;">
 	<option value="-1">请选择...</option>
 	<%
 	DepartInfoForm dif=new DepartInfoForm();
@@ -72,11 +72,11 @@ function confirmDel(id)
 	%>
 	</select>
 <%} %>
-<input type="button" value="新增操作员" onclick="window.navigate('userManage.do?param=add');"></p>
+<input type="button" value="新增操作员" onclick="window.location='userManage.do?param=add';"></p>
     	
 	<font color=#215385><b>操作员列表</b></font><br>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th>分公司</th>
 		<th>用户名</th>
@@ -102,7 +102,7 @@ function confirmDel(id)
 	        <td align=center><%= (tmpUserInfo.getOnline()==1?"<font color=green>在线</font>":"<font color=red>离线</font>") %></td>
 	        <td align=center><%= tmpUserInfo.getCreateTime()%></td>
 	        <td align=center><%= tmpUserInfo.getLastLoginTime()%></td>
-	        <td align=center><input type="button" value="编辑" onclick="window.navigate('userManage.do?param=edit&id=<%=tmpUserInfo.getId()%>');">&nbsp;
+	        <td align=center><input type="button" value="编辑" onclick="window.location='userManage.do?param=edit&id=<%=tmpUserInfo.getId()%>';">&nbsp;
 	        <%if(ctx.getId()==tmpUserInfo.getId() || tmpUserInfo.getUserName().equals("admin")){ }else{%><input type="button" value="删除" onclick="confirmDel(<%=tmpUserInfo.getId() %>);"><%} %></td>
 			</tr>
 		<%} %>

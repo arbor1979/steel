@@ -80,7 +80,7 @@ function verify(form){
 %>
      <form name="form1" method="post" action="priceChange.do" onSubmit="javascript:return verify(this);">
     	<input type="hidden" name="searchbutton" value="²éÑ¯"> 		
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
 		<TD align="center">
@@ -162,7 +162,7 @@ function verify(form){
     {
     %>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 	<%
 		if(kind.equals("month"))

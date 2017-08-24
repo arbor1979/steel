@@ -129,25 +129,17 @@ function viewDetail(url)
     	<input type="hidden" name="curpage"  value="1">
 	    <input type="hidden" name="orderby"  value="<%=orderby %>">
 	    <input type="hidden" name="searchbutton" value="查询">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE width="100%"  cellpadding="3" cellspacing="0"  class="mailtable"> 
 	  <tr>
             <td  align="right"> 
                 <b>单号:</b>
             </td>
             <td>
-            	<SELECT size=1 name="billId">
-            		<option value="0">-全部-</option>
-            		<%
-            			String tmpStr;
-            			for(int i=0; i<billIdList.size(); i++)
-            			{
-            				tmpStr = (String)billIdList.get(i);
-            		%>
-            		<option value="<%=tmpStr%>" <%=(tmpStr.equals(String.valueOf(gif.getBillId()))?"selected":"") %>><%=tmpStr%></option>
-			<%
-				}
-			%>
-            	</SELECT>
+            <%
+            out.print("<input type=\"text\" class=none size=10 value='"+(gif.getBillId()==0?"":gif.getBillId())+"' name='billId'>");
+             %>
+            	
+            	
             </td>
             <td  align="right"> 
                 <b>类型:</b>
@@ -166,6 +158,7 @@ function viewDetail(url)
             	<SELECT name="salesPerson">
             		<option value="">-全部-</option>
             		<%
+            		String tmpStr="";
             			for(int i=0; i<PersonList.size(); i++)
             			{
             				tmpStr = (String)PersonList.get(i);
@@ -190,7 +183,7 @@ function viewDetail(url)
 			<%
 				}
 			%>
-            	</SELECT><input class=none type="text" name="zhujima" value="<%=gif.getZhujima() %>" size=5 onChange="window.navigate('exportBillSearch.do?zhujima='+this.value);">(助记码)	
+            	</SELECT><input class=none type="text" name="zhujima" value="<%=gif.getZhujima() %>" size=5 onChange="window.location='exportBillSearch.do?zhujima='+this.value;">(助记码)	
          	</td>
             
           </tr>
@@ -297,7 +290,7 @@ function viewDetail(url)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<%
 			if(ibsri.allnum>0)
 			{

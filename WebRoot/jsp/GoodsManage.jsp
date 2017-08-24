@@ -26,7 +26,7 @@ function delGoodsInfo(goodsid)
 {
 	if(confirm('是否删除此产品信息？'))
 	{
-		window.navigate('goodsManage.do?param=del&goodsId='+goodsid);
+		window.location='goodsManage.do?param=del&goodsId='+goodsid;
 	}
 }
 function updateGoodsPrice(memberId,newname)
@@ -113,7 +113,7 @@ function orderList(order,old)
     	<input type="hidden" name="goodsType"  value="<%=gif.getGoodsType() %>">
 		<input type="hidden" name="orderstr"  value="<%=orderby %>">
 
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  
 	  <tr>
             
@@ -130,7 +130,7 @@ function orderList(order,old)
             </td>
             <TD colspan=2>
             		<input name="searchbutton" type="submit" value=" 查询 ">
-            		<input type="button" value="新增产品" onclick="window.navigate('goodsManage.do?param=add');">
+            		<input type="button" value="新增产品" onclick="window.location='goodsManage.do?param=add';">
 			</TD>
           </tr>
 
@@ -143,7 +143,7 @@ function orderList(order,old)
 	</div>
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('a.goodsid','<%=orderby%>');">产品编号</a><%
 		if(orderby.equals("a.goodsid")) out.print("↓"); if(orderby.equals("a.goodsid desc")) out.print("↑");
@@ -191,7 +191,7 @@ function orderList(order,old)
 			<td align="right" width="80"><INPUT name="price<%=tmpInfo.getGoodsId()%>" align="right" type="text" size=15 maxsize=10 value="<%=tmpInfo.getPurchaseUnitPrice()%>" onChange="updateGoodsPrice('<%=tmpInfo.getGoodsId()%>', this.value)" onkeyup="InputFloat(this.name);"></td>
 			<td align="right" width="73"><%=tmpInfo.getXishu() %></td>
 			<td align="center"  width="100">
-			<input type="button" value="修改" onclick="window.navigate('goodsManage.do?param=edit&goodsId=<%=tmpInfo.getGoodsId()%>');">
+			<input type="button" value="修改" onclick="window.location='goodsManage.do?param=edit&goodsId=<%=tmpInfo.getGoodsId()%>';">
 			<input type="button" value="删除" onclick="delGoodsInfo('<%=tmpInfo.getGoodsId()%>');">
 			</td>
        </tr>

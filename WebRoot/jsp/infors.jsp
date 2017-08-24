@@ -13,7 +13,7 @@
 	if(errfb.geturl()==null)
 		out.println("<script>alert('"+errfb.getSource()+"');</script>");
 	else
-		out.println("<script>alert('"+errfb.getSource()+"');if(window.parent!=null)window.parent.navigate('"+errfb.geturl()+"');else window.navigate('"+errfb.geturl()+"');</script>");
+		out.println("<script>alert('"+errfb.getSource()+"');if(window.parent!=null)window.parent.navigate('"+errfb.geturl()+"');else window.location='"+errfb.geturl()+"';</script>");
 %>
 </body>
 </html>

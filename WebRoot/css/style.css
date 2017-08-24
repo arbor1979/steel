@@ -421,6 +421,8 @@ P
 	width: 100%;
 
 }
+.mailtable td{padding:3px;} 
+.mailtable th{padding:3px;} 
 .none,select{
 	background-color: #f7f7ff;
 	border-top: 1pt none ;

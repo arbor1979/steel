@@ -90,7 +90,7 @@ function viewDetail(url)
 	<br>
 	<input type="hidden" name="curpage"  value="<%=ys.curpage %>">
 	<input type="hidden" name="orderby"  value="<%=orderby %>">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
         	<%if(ctx.isIfview()){ %>
              <td  align="right" width=80> 
@@ -127,7 +127,7 @@ function viewDetail(url)
 
 	<IMG src="images/line1.gif" width=900 border=0>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('b.name','<%=orderby%>');">往来单位名称<%if(orderby.equals("b.name")) out.print("↓"); if(orderby.equals("b.name desc")) out.print("↑");%></th>
@@ -152,9 +152,9 @@ function viewDetail(url)
 		        <td align='center'><%=tmpInfo.getShortname() %></td>
 		        <%} %>
 		        <td align='right' ><%= nf.format(tmpInfo.getJine()) %></td>
-		        <td align=center><input type="button" value="明细" onclick="window.navigate('otherPaySearch.do?param=list&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>&type=0');"></td>
+		        <td align=center><input type="button" value="明细" onclick="window.location='otherPaySearch.do?param=list&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>&type=0';"></td>
 		        <td align='right' ><%= nf.format(tmpInfo.getJine1()) %></td>
-		        <td align=center><input type="button" value="明细" onclick="window.navigate('otherPaySearch.do?param=list&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>&type=1');"></td>
+		        <td align=center><input type="button" value="明细" onclick="window.location='otherPaySearch.do?param=list&factory=<%=tmpInfo.getFactory() %>&deptid=<%=tmpInfo.getDeptid() %>&type=1';"></td>
 
 				</td>			
 	        </tr>

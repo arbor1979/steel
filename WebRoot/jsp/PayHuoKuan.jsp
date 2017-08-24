@@ -10,8 +10,11 @@
 <script language="javascript" src="js/menu.js"></script>
 <script language="JavaScript">
 
-function ConfirmPay(kind,billid,deptid,realmoney,fktype,acctype,factory,totalprice)
+function ConfirmPay(kind,billid,deptid,factory,totalprice)
 {
+	var realmoney=document.getElementById('ims'+billid).value;
+	var fktype=document.getElementById('imf'+billid).value;
+	var acctype=document.getElementById('acc'+billid).value;
 	if(!IsFloat(realmoney))
 	{
 		alert('金额必须是浮点数');
@@ -45,16 +48,24 @@ function ConfirmPay(kind,billid,deptid,realmoney,fktype,acctype,factory,totalpri
 			if(!confirm('去零金额 '+odd+' 小于 -5 元！是否确认该笔货款结清？'))
 				return;
 		}
-		window.navigate("payHuoKuan.do?param=pay&kind="+kind+"&billid="+billid+"&deptid="+deptid+"&realmoney="+realmoney+"&fkType="+fktype+"&acctype="+acctype+"&factory="+factory);
+		window.location="payHuoKuan.do?param=pay&kind="+kind+"&billid="+billid+"&deptid="+deptid+"&realmoney="+realmoney+"&fkType="+fktype+"&acctype="+acctype+"&factory="+factory;
 	}
 }
 
-function setTotalPrice(kind,text,price,yuchu,acctype,fk)
+function setTotalPrice(kind,billid,price,yuchu,fk)
 {
+	var text;
 	if(fk==0)
+	{
 		msg="预收帐户";
+		text=document.getElementById("exs"+billid);
+	}
 	else
+	{
 		msg="预付帐户";
+		text=document.getElementById("ims"+billid);
+	}
+	var acctype=document.getElementById("acc"+billid);
 	if(kind==5)
 	{
 		text.value=price;
@@ -151,7 +162,7 @@ String act = (String)request.getAttribute("act");
 
 	<IMG src="images/line1.gif" width=900 border=0>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th>销售单号</th>
@@ -191,7 +202,7 @@ String act = (String)request.getAttribute("act");
 			
 			<%if(!act.equals("view")){ %>
 			<td align='center'>
-			<SELECT name="exf<%= tmpInfo.getBillId()%>" onChange="setTotalPrice(this.value,exs<%= tmpInfo.getBillId()%>,<%=tmpInfo.getTotalPrice() %>,<%=ys.realmoney%>,acc<%= tmpInfo.getBillId()%>,0)" <%=(ctx.getDeptid()!=tmpInfo.getDeptid()?"disabled":"")%>>
+			<SELECT name="exf<%= tmpInfo.getBillId()%>" id="exf<%= tmpInfo.getBillId()%>" onChange="setTotalPrice(this.value,<%= tmpInfo.getBillId()%>,<%=tmpInfo.getTotalPrice() %>,<%=ys.realmoney%>,0)" <%=(ctx.getDeptid()!=tmpInfo.getDeptid()?"disabled":"")%>>
             		<%
             			FuKuanForm fkf;  	
             		     for(int i=0; i<fkList.size(); i++)
@@ -205,7 +216,7 @@ String act = (String)request.getAttribute("act");
             	</SELECT></td>
              <td >
             	
-            	<SELECT name="acc<%= tmpInfo.getBillId()%>" <%=(tmpInfo.getFkType()==5?"style='visibility:hidden'":"style='visibility:visible'") %>>
+            	<SELECT name="acc<%= tmpInfo.getBillId()%>" id="acc<%= tmpInfo.getBillId()%>" <%=(tmpInfo.getFkType()==5?"style='visibility:hidden'":"style='visibility:visible'") %>>
             		<%
             		AccountForm tmp;
             		for(int i=0;i<acc.size();i++)
@@ -217,7 +228,7 @@ String act = (String)request.getAttribute("act");
             	</SELECT>
             </td>
 			<td align='center'>
-			<input type="text" name="exs<%= tmpInfo.getBillId()%>" size=8 maxlength=15 onkeyup="InputFloat(this);"  <%=(ctx.getDeptid()!=tmpInfo.getDeptid()?"readonly":"")%>><input type="button" value="收款" onclick="ConfirmPay(1,<%=tmpInfo.getBillId()%>,<%=tmpInfo.getDeptid() %>,exs<%= tmpInfo.getBillId()%>.value,exf<%= tmpInfo.getBillId()%>.value,acc<%= tmpInfo.getBillId()%>.value,<%=tmpInfo.getFactory() %>,<%=tmpInfo.getTotalPrice()+tmpInfo.getTotaljiagong() %>)" <%=(ctx.getDeptid()!=tmpInfo.getDeptid()?"disabled":"")%>>
+			<input type="text" name="exs<%= tmpInfo.getBillId()%>" size=8 maxlength=15 onkeyup="InputFloat(this);"  <%=(ctx.getDeptid()!=tmpInfo.getDeptid()?"readonly":"")%>><input type="button" value="收款" onclick="ConfirmPay(1,<%=tmpInfo.getBillId()%>,<%=tmpInfo.getDeptid() %>,<%=tmpInfo.getFactory() %>,<%=tmpInfo.getTotalPrice()+tmpInfo.getTotaljiagong() %>)" <%=(ctx.getDeptid()!=tmpInfo.getDeptid()?"disabled":"")%>>
 			</td>
 			<%} %>
         </tr>
@@ -236,7 +247,7 @@ String act = (String)request.getAttribute("act");
 	实欠：<b><%=nf.format(ys.oddmoney)%></font> 元）</b>
 	<IMG src="images/line1.gif" width=900 border=0>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th>进货单号</th>
@@ -279,7 +290,7 @@ String act = (String)request.getAttribute("act");
 			<td align='center' width=70><%=color%><%=tmpInfo1.getPayLimTime()%></font></td>
 			<%if(!act.equals("view")){ %>
 			<td align='center'>
-			<SELECT name="imf<%= tmpInfo1.getBillId()%>" onChange="setTotalPrice(this.value,ims<%= tmpInfo1.getBillId()%>,<%=tmpInfo1.getTotalPrice() %>,<%=ys.realmoney%>,acc<%= tmpInfo1.getBillId()%>,1)" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"disabled":"")%>>
+			<SELECT name="imf<%= tmpInfo1.getBillId()%>" id="imf<%= tmpInfo1.getBillId()%>" onChange="setTotalPrice(this.value,<%= tmpInfo1.getBillId()%>,<%=tmpInfo1.getTotalPrice() %>,<%=ys.realmoney%>,1)" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"disabled":"")%>>
             		<%
             			FuKuanForm fkf;  	
             		     for(int i=0; i<fkList.size(); i++)
@@ -293,7 +304,7 @@ String act = (String)request.getAttribute("act");
             	</SELECT></td>
             	<td >
             	
-            	<SELECT name="acc<%= tmpInfo1.getBillId()%>" <%=(tmpInfo1.getFkType()==5?"style='visibility:hidden'":"style='visibility:visible'") %>>
+            	<SELECT name="acc<%= tmpInfo1.getBillId()%>" id="acc<%= tmpInfo1.getBillId()%>" <%=(tmpInfo1.getFkType()==5?"style='visibility:hidden'":"style='visibility:visible'") %>>
             		<%
             		AccountForm tmp;
             		for(int i=0;i<acc.size();i++)
@@ -309,7 +320,7 @@ String act = (String)request.getAttribute("act");
 	        if(tmpInfo1.getIeva()!=1)
 	        {
 	        %>
-			<input type="text" name="ims<%= tmpInfo1.getBillId()%>" size=8 maxlength=15 onkeyup="InputFloat(this);" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"readonly":"")%>><input type="button" value="付款" onclick="ConfirmPay(-1,<%=tmpInfo1.getBillId()%>,<%=tmpInfo1.getDeptid() %>,ims<%= tmpInfo1.getBillId()%>.value,imf<%= tmpInfo1.getBillId()%>.value,acc<%= tmpInfo1.getBillId()%>.value,<%=tmpInfo1.getFactory() %>,<%=tmpInfo1.getTotalPrice() %>)" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"disabled":"")%>>
+			<input type="text" name="ims<%= tmpInfo1.getBillId()%>"  id="ims<%= tmpInfo1.getBillId()%>" size=8 maxlength=15 onkeyup="InputFloat(this);" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"readonly":"")%>><input type="button" value="付款" onclick="ConfirmPay(-1,<%=tmpInfo1.getBillId()%>,<%=tmpInfo1.getDeptid() %>,<%=tmpInfo1.getFactory() %>,<%=tmpInfo1.getTotalPrice() %>);" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"disabled":"")%>>
 			<%} %>
 		</td>
 		<%} %>
@@ -322,7 +333,7 @@ String act = (String)request.getAttribute("act");
 <%
 	}
 %>
-<p align="center"><input type="button" value=" 返回 " onclick="window.navigate('payHuoKuan.do?kind=<%=kind %>&act=<%=act %>');">
+<p align="center"><input type="button" value=" 返回 " onclick="window.location='payHuoKuan.do?kind=<%=kind %>&act=<%=act %>';">
 	</td>
         </tr>
         <tr> 

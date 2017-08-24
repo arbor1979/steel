@@ -19,7 +19,7 @@ function delYeWuYuan(id)
 {
 	if(confirm('确认删除此车辆资料？'))
 	{
-		window.navigate('truckManage.do?param=del&id='+id);
+		window.location='truckManage.do?param=del&id='+id;
 	}
 }
 function orderList(order,old)
@@ -75,7 +75,7 @@ function orderList(order,old)
 %>
 	<form name="form2" method="post" action="truckManage.do?" >
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" > 
                 <b>车牌号:</b>
@@ -138,7 +138,7 @@ function orderList(order,old)
             <td >
 			<input type="hidden" name="orderby" value="<%=orderby%>">
             <input name=search type=submit value="查询">&nbsp;
-            <input name=new type=button value="新增" onclick="window.navigate('truckManage.do?param=add');">
+            <input name=new type=button value="新增" onclick="window.location='truckManage.do?param=add';">
             </td>
           </tr>
 	</TABLE>
@@ -147,7 +147,7 @@ function orderList(order,old)
     	
 	<font color=#215385><b>车辆列表</b>(共 <b><%=userList.size()%></b> 个)</font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('a.carno','<%=orderby%>');">车牌号</a><%if(orderby.equals("a.carno")) out.print("↓"); if(orderby.equals("a.carno desc")) out.print("↑");%></th>
 		<%
@@ -185,7 +185,7 @@ function orderList(order,old)
 	        <td align=right><%= tmpUserInfo.getWeight() %></td>
 	        <td align=center>
 	        <%if(ctx.getDeptid()==tmpUserInfo.getDeptid() || ctx.getDeptid()==0) {%>
-	        <input type="button" value="修改" onclick="window.navigate('truckManage.do?param=edit&id=<%= tmpUserInfo.getId() %>');">
+	        <input type="button" value="修改" onclick="window.location='truckManage.do?param=edit&id=<%= tmpUserInfo.getId() %>';">
 	        <input type="button" value="删除" onclick="delYeWuYuan(<%= tmpUserInfo.getId() %>);">
 	        <%
 	        }

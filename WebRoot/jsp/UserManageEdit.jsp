@@ -58,9 +58,9 @@ function addUserRec()
   	{
     	MENU_ID=MENU_ID_ARRAY[j];
 
-    	for(i=0;i<document.all(MENU_ID).length;i++)
+    	for(i=0;i<document.getElementsByName(MENU_ID).length;i++)
     	{
-        	el=document.all(MENU_ID).item(i);
+        	el=document.getElementsByName(MENU_ID).item(i);
         	if(el.checked)
         	{  
         		val=el.value;
@@ -68,15 +68,7 @@ function addUserRec()
         	}
     	}
     
-    	if(i==0)
-    	{
-        	el=document.all(MENU_ID);
-        	if(el.checked)
-        	{  
-        		val=el.value;
-           		func_id_str+=val+",";
-        	}
-   		}
+    	
   	}
   	if(func_id_str=='')
   	{
@@ -90,21 +82,15 @@ function addUserRec()
 function check_all(menu_all,MENU_ID)
 {
 
- for (i=0;i<document.all(MENU_ID).length;i++)
+ for (i=0;i<document.getElementsByName(MENU_ID).length;i++)
  {
    if(menu_all.checked)
-      document.all(MENU_ID).item(i).checked=true;
+      document.getElementsByName(MENU_ID).item(i).checked=true;
    else
-      document.all(MENU_ID).item(i).checked=false;
+      document.getElementsByName(MENU_ID).item(i).checked=false;
  }
 
- if(i==0)
- {
-   if(menu_all.checked)
-      document.all(MENU_ID).checked=true;
-   else
-      document.all(MENU_ID).checked=false;
- }
+
 }
 </script>
 </head>
@@ -151,7 +137,7 @@ function check_all(menu_all,MENU_ID)
     	<font color=#215385><b>操作员信息</b></font>
     	<IMG src="images/line1.gif" border=0 width=900>
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr>
             <td  align="right" > 
                 <b>*名称:</b>
@@ -209,14 +195,14 @@ function check_all(menu_all,MENU_ID)
 	</TABLE>
 	<br>
 	<center>操作权限</center>
-	<table width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">
+	<table  class="mailtable">
 	<tr bgcolor="#C2CEDC">
 	<%
 	
 	for(int i=0;i<menu.size();i++)
 	{
 		String m[]=(String [])menu.get(i);
-		out.println("<th><input type='checkbox' name=m'"+m[0]+"' value='"+m[0]+"' onClick=check_all(this,'"+m[0]+"');>"+m[1]+"</th>");
+		out.println("<th><input type='checkbox' name='m"+m[0]+"' value='"+m[0]+"' onClick=check_all(this,'"+m[0]+"');>"+m[1]+"</th>");
 	}
 	int index=0;
 	%>

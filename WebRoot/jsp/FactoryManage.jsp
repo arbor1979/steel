@@ -19,7 +19,7 @@ function delYeWuYuan(id)
 {
 	if(confirm('是否删除此单位？'))
 	{
-		window.navigate('factoryManage.do?param=del&id='+id);
+		window.location='factoryManage.do?param=del&id='+id;
 	}
 }
 function gotoPage(){
@@ -93,7 +93,7 @@ function orderList(order,old)
 	<form name="form2" method="post" action="factoryManage.do?" >
     	<br>
     	<input type="hidden" name="curpage"  value="1">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" > 
                 <b>名称:</b>
@@ -156,8 +156,8 @@ function orderList(order,old)
             <td >
             <input type="hidden" name="orderby" value="<%=orderby%>">
             <input name=search type=submit value="查询">&nbsp;
-            <input name=new type=button value="新增" onclick="window.navigate('factoryManage.do?param=add');">&nbsp;
-            <input name=export type=button value="导出" onclick="window.navigate('factoryManage.do?param=export');">
+            <input name=new type=button value="新增" onclick="window.location='factoryManage.do?param=add';">&nbsp;
+            <input name=export type=button value="导出" onclick="window.location='factoryManage.do?param=export';">
             </td>
           </tr>
 	</TABLE>
@@ -166,7 +166,7 @@ function orderList(order,old)
     	
 	<font color=#215385><b>往来单位列表</b>(共 <b><%=userList.allnum %></b> 个)
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('a.id','<%=orderby%>');">编号</a><%if(orderby.equals("a.id")) out.print("↓"); if(orderby.equals("a.id desc")) out.print("↑");%></th>
 		<%
@@ -213,7 +213,7 @@ function orderList(order,old)
 	        <td align=center><%= kind%></td>
 	        <td align=center>
 	        <%if(ctx.getDeptid()==tmpUserInfo.getDeptid() || ctx.getDeptid()==0){ %>
-	        <input type="button" value="修改" onclick="window.navigate('factoryManage.do?param=edit&id=<%= tmpUserInfo.getId() %>');">
+	        <input type="button" value="修改" onclick="window.location='factoryManage.do?param=edit&id=<%= tmpUserInfo.getId() %>';">
 	        <input type="button" value="删除" onclick="delYeWuYuan(<%= tmpUserInfo.getId() %>);">
 	        <%} %></td>
 	        </tr>

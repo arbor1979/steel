@@ -71,7 +71,7 @@ function viewDetail(url)
     	<form name="form1" method="post" action="yuShouKuanSearch.do" >
     	<font color=#215385><b></b></font>
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr >
             <td  align="right" width=100> 
                 <b>操作类型:</b>
@@ -173,7 +173,7 @@ function viewDetail(url)
     冲抵合计：<b><%=nf.format(ys.realmoney)%></b> 元，期末合计：<b><%=nf.format(ys.allsumnum)%></b> 元）</font>
 	
 	<IMG src="images/line1.gif" width=900 border=0>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th><%if(kind==1){out.print("客户");}else if(kind==-1){out.print("供应商");}else{out.print("车辆");}%>名称</th>
@@ -202,7 +202,7 @@ function viewDetail(url)
 	        <td align='right'><%= nf.format(tmpInfo.getPayhuokuan()) %></td>
 	        <td align='right'><%= nf.format(tmpInfo.getBegChuzhi()+tmpInfo.getAddChuzhi()-tmpInfo.getPayhuokuan()) %></td>
 
-			<td align='center'><input type="button" value="单据明细" 	onclick="window.navigate('yuShouKuanSearch.do?param=detail&kind=<%=kind %>&factory=<%=tmpInfo.getFactory() %>&deptid=<%=deptid %>&importtime1=<%=importTime1 %>&importtime2=<%=importTime2 %>');"></td>
+			<td align='center'><input type="button" value="单据明细" 	onclick="window.location='yuShouKuanSearch.do?param=detail&kind=<%=kind %>&factory=<%=tmpInfo.getFactory() %>&deptid=<%=deptid %>&importtime1=<%=importTime1 %>&importtime2=<%=importTime2 %>';"></td>
             </tr>
 <%
   			      	

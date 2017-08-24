@@ -97,13 +97,13 @@ if(ifprint.equals("1") || ifprint.equals("2"))
 
 <%  
 	if(ifprint.equals("1"))
-		out.print("window.navigate('accessMoney.do');");
+		out.print("window.location='accessMoney.do';");
 	else
 		out.print("window.close();");
 %>
 </script>
 <%}else{ %>
-<p align="center"><input type="button" name="printtr" value=" ´òÓ¡ " onclick="window.navigate('accessMoneyItemView.do?billId=<%=af.getBillid() %>&deptid=<%=af.getDeptid() %>&ifprint=2');">
+<p align="center"><input type="button" name="printtr" value=" ´òÓ¡ " onclick="window.location='accessMoneyItemView.do?billId=<%=af.getBillid() %>&deptid=<%=af.getDeptid() %>&ifprint=2';">
 &nbsp;<input type="button" name="close" value=" ¹Ø±Õ " onclick="window.close();">
 <%} %>
 </body>

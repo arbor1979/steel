@@ -105,13 +105,13 @@ function printbill()
 printbill();
 <%  
 	if(ifprint.equals("1"))
-		out.print("window.navigate('kaiPing.do');");
+		out.print("window.location='kaiPing.do';");
 	else
 		out.print("window.close();");
 %>
 </script>
 <%}else{ %>
-<p align="center"><input type="button" name="printtr" value=" ´òÓ¡ " onclick="window.navigate('kaiPingItemsView.do?billId=<%=ibf.getBillid() %>&deptid=<%=ibf.getDeptid() %>&ifprint=2');">
+<p align="center"><input type="button" name="printtr" value=" ´òÓ¡ " onclick="window.location='kaiPingItemsView.do?billId=<%=ibf.getBillid() %>&deptid=<%=ibf.getDeptid() %>&ifprint=2';">
 &nbsp;<input type="button" name="close" value=" ¹Ø±Õ " onclick="window.close();">
 <%} %>
 </body>

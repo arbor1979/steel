@@ -73,7 +73,7 @@ function orderList(order,old)
 	<form name="form1" method="post" action="payYunFei.do" >
 	<br>
 	<input type="hidden" name="orderby"  value="<%=orderby %>">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
         	<%if(ctx.isIfview()){ %>
              <td  align="right" width=80> 
@@ -109,7 +109,7 @@ function orderList(order,old)
 
 	<IMG src="images/line1.gif" width=900 border=0>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<%if(ctx.isIfview()){ %>

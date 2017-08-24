@@ -1,14 +1,13 @@
 <%@ page contentType="text/html; charset=gbk" language="java" %>
 <%@ page import="mediastore.web.form.*"%>
-
 <%@ page import="java.text.*"%>
 <%@page import="java.util.List"%>
 <html>
 <head>
 <title>天天阳光钢材进销存系统</title>
 <link rel="stylesheet" href="css/style.css" type="text/css">
-<script language="javascript" src="js/menu.js"></script>
-<script language="JavaScript">
+<script src="js/menu.js"></script>
+<script >
 
 function ConfirmPay(kind,billid,deptid,realmoney,fktype,acctype,factory,totalprice)
 {
@@ -37,15 +36,15 @@ function ConfirmPay(kind,billid,deptid,realmoney,fktype,acctype,factory,totalpri
 	{
 		if(odd>5)
 		{
-			if(!confirm('去零金额 '+odd+' 超过 5 元！是否确认该笔货款结清？'))
+			if(!confirm("去零金额 "+odd+" 超过 5 元！是否确认该笔货款结清？"))
 				return;
 		}
 		else if(odd<-5)
 		{
-			if(!confirm('去零金额 '+odd+' 小于 -5 元！是否确认该笔货款结清？'))
+			if(!confirm("去零金额 "+odd+" 小于 -5 元！是否确认该笔货款结清？"))
 				return;
 		}
-		window.navigate("payHuoKuan.do?param=pay&kind="+kind+"&billid="+billid+"&deptid="+deptid+"&realmoney="+realmoney+"&fkType="+fktype+"&acctype="+acctype+"&factory="+factory);
+		window.location="payHuoKuan.do?param=pay&kind="+kind+"&billid="+billid+"&deptid="+deptid+"&realmoney="+realmoney+"&fkType="+fktype+"&acctype="+acctype+"&factory="+factory;
 	}
 }
 
@@ -78,8 +77,8 @@ function viewDetail(url)
 }
 </script>
 </head>
-<body background='images/bgall.gif'>
-<table width="98%" align="center">
+<body style="background:'images/bgall.gif'">
+<table style="width:98%; align:center">
   <tr> 
     <td><%@include file='../html/head.htm'%></td>
   </tr>
@@ -153,7 +152,7 @@ int deptid=phf.getDeptid();
 	<input type="hidden" name="curpage"  value="<%=ys.curpage %>">
 	<input type="hidden" name="orderby"  value="<%=orderby %>">
 	<input type="hidden" name="act"  value="<%=act %>">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
         	<%if(ctx.isIfview()){ %>
              <td  align="right" width=80> 
@@ -166,16 +165,18 @@ int deptid=phf.getDeptid();
     			    	for(int i=0;i<departList.size();i++)
     			    	{
     			    		dif=(DepartInfoForm)departList.get(i);
-    			%>
-    			<option value="<%=dif.getId() %>" <%=(deptid==dif.getId()?"selected":"") %>><%=dif.getShortname()%></option>
-    			<%
-    			}
+    			    		String selected="";
+    						if(deptid==dif.getId())
+    							selected="selected";
+    						out.print("<option value='"+dif.getId()+"' "+selected+">"+dif.getShortname()+"</option>");
+    			
+    					}
     			%>
     			</select>
     			</td>
             <%} %>
             <td  align="right" width=150> 
-                <b><%=(kind==1?"客户":"供应商") %>名称(助记码):</b>
+                <b><% if(kind==1) {out.print("客户");}else {out.print("供应商");} %>名称(助记码):</b>
             </td>
             <td>
             	<input class=none type="text" name="zhujima" value="<%=zhujima %>"> 
@@ -186,7 +187,7 @@ int deptid=phf.getDeptid();
      </TABLE>
      </form>
 
-	<font color=#215385><%=(kind==1?"应收":"应付") %>款列表（共 <b><%=ys.rslist.size()%></b> 张<%=(kind==1?"销售单":"入库单") %>，合计 <b><%=ys.allsumnum%></b> 吨，
+	<font color=#215385><%if(kind==1){out.print("应收");}else{out.print("应付");} %>款列表（共 <b><% out.print(ys.rslist.size());%></b> 张<%=(kind==1?"销售单":"入库单") %>，合计 <b><%=ys.allsumnum%></b> 吨，
 	货款：<b><%=nf.format(ys.allmoney)%></b> 元，<%=(kind==1?"预收":"预付") %>：<b><%=nf.format(ys.realmoney)%></b> 元，
 	<%=(kind==1?"实欠":"应付") %>：<b><%=nf.format(ys.oddmoney)%></b> 元）</font>
 	<IMG src="images/line1.gif" width=900 border=0>
@@ -196,7 +197,7 @@ int deptid=phf.getDeptid();
 %>
 
 	
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th>销售单号</th>
@@ -276,7 +277,7 @@ int deptid=phf.getDeptid();
 	else
 	{
 	%>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th>进货单号</th>
@@ -333,7 +334,7 @@ int deptid=phf.getDeptid();
             	</SELECT></td>
             	<td >
             	
-            	<SELECT name="acc<%= tmpInfo1.getBillId()%>" <%=(tmpInfo1.getFkType()==5?"style='visibility:hidden'":"style='visibility:visible'") %>>
+            	<SELECT name="acc<%= tmpInfo1.getBillId()%>" <% if(tmpInfo1.getFkType()==5){out.write("style='visibility:hidden'");}else{ out.write("style='visibility:visible'");} %>>
             		<%
             		AccountForm tmp;
             		for(int i=0;i<acc.size();i++)
@@ -349,7 +350,7 @@ int deptid=phf.getDeptid();
 	        if(tmpInfo1.getIeva()!=1)
 	        {
 	        %>
-			<input type="text" name="ims<%= tmpInfo1.getBillId()%>" size=8 maxlength=15 onkeyup="InputFloat(this);" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"readonly":"")%>><input type="button" value="付款" onclick="ConfirmPay(-1,<%=tmpInfo1.getBillId()%>,<%=tmpInfo1.getDeptid() %>,ims<%= tmpInfo1.getBillId()%>.value,imf<%= tmpInfo1.getBillId()%>.value,acc<%= tmpInfo1.getBillId()%>.value,<%=tmpInfo1.getFactory() %>,<%=tmpInfo1.getTotalPrice() %>)" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"disabled":"")%>>
+			<input type="text" name="ims<%= tmpInfo1.getBillId()%>" size=8 maxlength=15 onkeyup="InputFloat(this);" <% if(ctx.getDeptid()!=tmpInfo1.getDeptid()){out.write("readonly");}%> ><input type="button" value="付款" onclick="ConfirmPay(-1,<%=tmpInfo1.getBillId()%>,<%=tmpInfo1.getDeptid() %>,ims<%= tmpInfo1.getBillId()%>.value,imf<%= tmpInfo1.getBillId()%>.value,acc<%= tmpInfo1.getBillId()%>.value,<%=tmpInfo1.getFactory() %>,<%=tmpInfo1.getTotalPrice() %>)" <%=(ctx.getDeptid()!=tmpInfo1.getDeptid()?"disabled":"")%>>
 			<%} %>
 		</td>
 		<%} %>

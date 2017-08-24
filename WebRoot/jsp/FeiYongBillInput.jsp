@@ -252,7 +252,7 @@ function UpdateBill()
 	<input type="hidden" name="obj4numbercheck" value="">
 	<input type="hidden" name="param" value="submit">
 	<input type="hidden" name="kind" value="<%=ibf.getKind() %>">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
           <tr>
             <td  align="right" width=80> 
                 <b>*<%=(ibf.getKind()==1?"收款帐户":"付款帐户") %>:</b>
@@ -287,7 +287,7 @@ function UpdateBill()
 	</TABLE>
 	<font color=#215385><b>明细列表</b></font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -335,7 +335,7 @@ function UpdateBill()
 	</TABLE>
 	</form>
 	
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" > 
                 <b>单号:</b>

@@ -125,7 +125,7 @@ function gotoPageByN(n)
     	<input type="hidden" name="curpage" value="<%=ys.curpage%>">
     	<font color=#215385><b></b></font>
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr>
             <td  align="right" > 
                 <b>操作类型:</b>
@@ -142,7 +142,7 @@ function gotoPageByN(n)
                 <b><%=(kind==1?"客户":"供应商")%>名称:</b>
             </td>
             <td colspan=3>
-            	<SELECT name="factory" onChange="SubmitThis();">
+            	<SELECT name="factory" id="factory" onChange="SubmitThis();">
             		<option value="0">请选择...</option>
             		<%
             		            	FactoryInfoForm tmpFact=null;
@@ -221,7 +221,7 @@ function gotoPageByN(n)
                 <b><%=(kind==1?"预收":"预付")%>金额:</b>
             </td>
             <td >
-            	<INPUT  name="newpay" class=none type="text" size="20" maxlength="15" value="" onKeyUp="InputFloat(this);">
+            	<INPUT  name="newpay" id="newpay" class=none type="text" size="20" maxlength="15" value="" onKeyUp="InputFloat(this);">
             	
             	<INPUT   name="submit1" type="button" value="<%=(kind==1?" 收款 ":" 付款 ")%>" onClick="savePrepay(<%=ys.realmoney%>,<%=kind %>);">
             </td>
@@ -241,7 +241,7 @@ function gotoPageByN(n)
 	[<a href="payHuoKuan.do?param=list&kind=<%=kind %>&factory=<%=factory %>&deptid=<%=ctx.getDeptid() %>">进入货款应收应付</a>]
 	<%} %>
 	<IMG src="images/line1.gif" width=900 border=0>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>

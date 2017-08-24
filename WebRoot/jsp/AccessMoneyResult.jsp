@@ -69,7 +69,7 @@
 	<br>
 	<h3 align=center>操作成功</h3>
 	<%if(kind==1){ %>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
           <tr>
             <td  align="right" width="50%"> 
                 <b>转出账户:</b>
@@ -107,7 +107,7 @@
    </table>
    
 	<%}else if(kind==2){ %>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
             <tr>
             <%
             for(int i=0;i<acc.size();i++)
@@ -138,7 +138,7 @@
 	else if(kind==3)
 	{ 
 	%>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
           <tr>
             <%
             for(int i=0;i<acc.size();i++)
@@ -169,7 +169,7 @@
 	back="inputOutputMoney.do";
 }
 %>
-	<p align=center><input type="button" name="back" value=" 返回 " onclick="window.navigate('<%=back %>');"></p>
+	<p align=center><input type="button" name="back" value=" 返回 " onclick="window.location='<%=back %>';"></p>
 	</td>
         </tr>
         <tr> 

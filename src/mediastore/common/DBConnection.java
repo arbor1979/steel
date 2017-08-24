@@ -6,9 +6,12 @@ package mediastore.common;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+
+import mediastore.util.StrUtility;
 
 // Referenced classes of package mediastore.common:
 //            SystemConfig
@@ -86,5 +89,15 @@ public class DBConnection
             throw e;
         }
     }
+    public int executeUpdate(Statement stmt,String strSQL) throws SQLException
+	{
+		int n=stmt.executeUpdate(strSQL);
+		if(n>=1)
+		{
+			strSQL = "insert into sqlLog (sqltext) values ('" + StrUtility.replaceString(strSQL, "'", "''")+ "')";
+			stmt.executeUpdate(strSQL);
+		}
+		return n;
+	}
 
 }

@@ -127,7 +127,7 @@ function viewDetail(url)
     	<input type="hidden" name="curpage"  value="1">
     	<input type="hidden" name="orderby"  value="<%=orderby %>">
     	<input type="hidden" name="searchbutton" value="查询">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td align="center" colspan=2>
             	<input type="radio" name="kind" value=0 <%=(kind==0?"checked":"") %> onClick="form1.submit();">发票应收&nbsp;
@@ -183,7 +183,7 @@ function viewDetail(url)
 			<%
 			}
 			%>
-            	</SELECT><input class=none type="text" name="zhujima" value="<%=gif.getZhujima() %>" size=5 onChange="window.navigate('faPiaoSearch.do?zhujima='+this.value);">(助记码)
+            	</SELECT><input class=none type="text" name="zhujima" value="<%=gif.getZhujima() %>" size=5 onChange="window.location='faPiaoSearch.do?zhujima='+this.value;">(助记码)
             		
          	</td>
            
@@ -270,7 +270,7 @@ function viewDetail(url)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<%
   			if(ibsri.allnum>0)
   			{

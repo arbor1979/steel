@@ -109,7 +109,7 @@ function verify()
     	<input type="hidden" name="searchbutton" value="查询">
     	<input type="hidden" name="classid" value="<%=af.getClassid() %>">
     	<input type="hidden" name="typeid" value="<%=af.getTypeid() %>">    	
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             
             <td  align="right"><b>查询帐户:</b></td>
@@ -219,7 +219,7 @@ function verify()
 	<font color=#215385>操作记录 (共 <b><%=tp.allnum %></b> 笔，期初余额：<b><%=nf.format(tp.allsumnum) %></b>，合计收入：<b><%=nf.format(tp.allmoney) %></b> 元
 	，合计支出：<b><%=nf.format(-tp.realmoney) %></b> 元,帐户余额：<b><%=nf.format(allmoney) %></b> 元)
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th></th>
 		<th><a class="tablehead" href="javascript:orderList('a.billid','<%=orderby%>');">原始单号<%

@@ -108,14 +108,14 @@ function deleteGoodsType(goodstype,classid)
 
 <form name="form1" method="post" action="goodsTypeManage.do?param=add" onSubmit="return addType()">
 <br>
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 <tr>
 	<td align="center">
 	<font color=#215385>子类名称</font>
 	<input type=text name='name' size="18" maxlength="25" class="none">
 	<input type="hidden" name="classid"  value="<%=classid %>">
 	<input name=addclass type=submit value=" 添加 ">&nbsp;&nbsp;
-	<input type=button value=" 返回 " onClick="window.navigate('goodsClassManage.do');">
+	<input type=button value=" 返回 " onClick="window.location='goodsClassManage.do';">
 	</td>
 </tr>
 </TABLE>
@@ -125,7 +125,7 @@ function deleteGoodsType(goodstype,classid)
 <IMG src="images/line1.gif" border=0 width=900>
 <br>
 <input type="hidden" name="start_rec_num"  value="1">
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 <tr>
 <td align="center" >
 	<table width="100%">
@@ -179,7 +179,7 @@ function deleteGoodsType(goodstype,classid)
 	</td>
         </tr>
         <tr> 
-          <td valign="middle" align="center">	<input type=button value=" 返回 " onClick="window.navigate('goodsClassManage.do');"></td>
+          <td valign="middle" align="center">	<input type=button value=" 返回 " onClick="window.location='goodsClassManage.do';"></td>
         </tr>
 
       </table>

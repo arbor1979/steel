@@ -13,7 +13,7 @@ function delYeWuYuan(id)
 {
 	if(confirm('是否删除此导购员？'))
 	{
-		window.navigate('yeWuManage.do?param=del&id='+id);
+		window.location='yeWuManage.do?param=del&id='+id;
 	}
 }
 
@@ -67,7 +67,7 @@ function delYeWuYuan(id)
     	<input type="hidden" name="param" value="">
     	<br>
     	<input type="hidden" name="orderStr"  value="<%=orderStr%>">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 		<!--测试<input name=submit type=submit onClick="addUserRec();">-->
 	  <tr>
             <td  align="right"> 
@@ -118,7 +118,7 @@ function delYeWuYuan(id)
             %>
             <td>
 				<input name=addrec type=submit value="搜索" onclick="form1.param.value='search';">
-            	<input name=sear type=button value="添加" onclick="window.navigate('yeWuManage.do?param=add');">
+            	<input name=sear type=button value="添加" onclick="window.location='yeWuManage.do?param=add';">
             </td>
           </tr>
 
@@ -126,7 +126,7 @@ function delYeWuYuan(id)
 	</form>
 	<font color=#215385><b>导购员列表</b>(共 <b><%=userList.size()%></b> 个)</font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th>编号</th>
 		<%
@@ -162,7 +162,7 @@ function delYeWuYuan(id)
 	        <td align=center><%=tmpUserInfo.getMobile()%></td>
 	        <td align=center>
 	        <%if(ctx.getDeptid()==tmpUserInfo.getDeptid() || ctx.getDeptid()==0){ %>
-	        <input type="button" value="编辑" onclick="window.navigate('yeWuManage.do?param=edit&id=<%= tmpUserInfo.getId() %>');">
+	        <input type="button" value="编辑" onclick="window.location='yeWuManage.do?param=edit&id=<%= tmpUserInfo.getId() %>';">
 	        <input type="button" value="删除" onclick="delYeWuYuan('<%=tmpUserInfo.getId() %>');">
 	        <%} %></td>
 	        </tr>

@@ -110,7 +110,7 @@ function viewDetail(url)
     	<input type="hidden" name="curpage"  value="1">
     	<input type="hidden" name="orderstr"  value="<%=orderby %>">
     	<input type="hidden" name="searchbutton" value="²éÑ¯">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	    <tr>
            
 		<%
@@ -150,7 +150,7 @@ function viewDetail(url)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>

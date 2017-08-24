@@ -226,7 +226,7 @@ public class GoodsExportGoods
 	        		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,storeid,avgprice) values('"+geg.getGoodsId()+
 	        		"',-("+newAmount+"),"+geg.getStoreId()+","+avgprice+")";
 	        	}
-	        	nRet=stmt.executeUpdate(strSQL);	
+	        	nRet=dbc.executeUpdate(stmt,strSQL);	
 	        	if(nRet != 1)
 	            {
 	                nRet = -1;
@@ -336,7 +336,7 @@ public class GoodsExportGoods
 		        		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,storeid,avgprice) values('"+geg.getGoodsId()+
 		        		"',-("+newAmount+"),"+geg.getStoreId()+","+avgprice+")";
 		        	}
-		        	nRet=stmt.executeUpdate(strSQL);	
+		        	nRet=dbc.executeUpdate(stmt,strSQL);	
 		        	if(nRet != 1)
 		            {
 		                nRet = -1;
@@ -686,7 +686,7 @@ public class GoodsExportGoods
 	        		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,RepertoryNum,storeid,avgprice) values('"+geg.getGoodsId()+
 	        		"',"+geg.getExportAmount()+","+geg.getExportNum()+","+geg.getStoreId()+","+avgprice+")";
 	        	}
-	        	nRet=stmt.executeUpdate(strSQL);	
+	        	nRet=dbc.executeUpdate(stmt,strSQL);	
 	        	if(nRet != 1)
 	            {
 	                nRet = -1;
@@ -856,7 +856,7 @@ public class GoodsExportGoods
             		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,RepertoryNum,storeid,avgprice) values('"+rs.getString("goodsid")+
             		"',"+rs.getDouble("exportAmount")+","+rs.getInt("exportNum")+","+rs.getString("storeid")+","+avgprice+")";
             	}
-            	nRet = stmt1.executeUpdate(strSQL);            	
+            	nRet = dbc.executeUpdate(stmt1,strSQL);            	
             	if(nRet!=1)
                 	throw new Exception("¸üÐÂ¿â´æÊ§°Ü");
 

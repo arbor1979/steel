@@ -15,7 +15,7 @@
 <script language="JavaScript">
 function SubmitThis(deptid)
 {
-	window.navigate('monthLiRun.do?deptid='+deptid);
+	window.location='monthLiRun.do?deptid='+deptid;
 }
 function mySubmit1(){
 
@@ -94,7 +94,7 @@ function mySubmit1(){
      	<input type="hidden" name="classid"  value="">
     	<input type="hidden" name="typeid"  value="">
     	<input type="hidden" name="searchbutton" value="查询"> 	
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
           
@@ -195,7 +195,7 @@ function mySubmit1(){
 	<font color=#215385>合计销售额：<b><%=nf.format(total1) %></b> 元，合计毛利：<b><%=nf.format(total2) %></b> 元，
 	合计净利润：<b><%=nf.format(total3) %></b> 元</font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th></th>
 		<%

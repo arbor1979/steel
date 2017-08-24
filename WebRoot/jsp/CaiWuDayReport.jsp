@@ -74,7 +74,7 @@
     	<input type="hidden" name="ifprint" value="0">
     	<input type="hidden" name="importtime1" value="<%=importTime1 %>">
     	<input type="hidden" name="importtime2" value="<%=importTime2 %>">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
 		<TD align="right" width=10%><b>报表日期: </b></TD>
@@ -116,7 +116,7 @@
 	</form>
     	
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th >项目</th>
 		<th >明细科目</th>

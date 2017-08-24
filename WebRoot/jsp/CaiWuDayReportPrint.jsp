@@ -26,6 +26,7 @@ if(ifprint.equals("2"))
 <html>
 <head>
 <title>天天阳光钢材进销存系统</title>
+<script language="javascript" src="js/LodopFuncs.js"></script>
 <%if(ifprint.equals("1")){%>
 <link rel="stylesheet" href="css/stylePrint.css" type="text/css">
 <%}%>
@@ -33,6 +34,7 @@ if(ifprint.equals("2"))
 <body>
 
 <br>
+<div id="main">
 <h2 align="center" style="font-family: 楷体_GB2312;">财务日报</h2>
 <table width="100%" align="cneter">
 <tr >
@@ -288,22 +290,33 @@ if(ifprint.equals("2"))
 		</tr>
 	</table></td></tr>
 	</table>
-	
+</div>
 <script>
-function printbill()
-{
-	//printtr.style.display = "none";
-	document.write("<object ID='WebBrowser' WIDTH=0 HEIGHT=0 CLASSID='CLSID:8856F961-340A-11D0-A96B-00C04FD705A2'></object>"); 
-	WebBrowser.ExecWB(7,1); 
-	//window.history.back(-1);
-	//printtr.style.display = "";
-	//window.opener=null; 
-	//window.close(); 
-	
-}
-printbill();
-window.history.back(-1);
+	var LODOP;
+	function printBill()
+	{
+		LODOP=getLodop();  
+		LODOP.PRINT_INITA(0,0,522,333,"财务日报");	
+		//LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_全页");
+		//LODOP.SET_PRINT_PAGESIZE(0,2410,1300,"241");
+		LODOP.ADD_PRINT_HTM("5%","5%","90%","90%",document.getElementById('main').innerHTML);
+		LODOP.ADD_PRINT_HTM(1,600,300,100,"页号：<font color='#0000ff' format='0'><span tdata='pageNO'>第##页</span>/<span tdata='pageCount'>共##页</span></font>");
+		LODOP.SET_PRINT_STYLEA(0,"ItemType",1);
+		LODOP.PREVIEW();
+	}
+<%if(ifprint.equals("1")){%>
+	window.onload=function(){
+		printBill();	
+	};
+<%}%>
 </script>
-    	
+
+<p align="center"><input type="button" name="printtr" value=" 打印 " onclick="printBill();">
+&nbsp;<input type="button" name="close" value=" 返回" onclick="
+<%if(ifprint.equals("1"))
+		out.print("window.location='caiWuDayReport.do';");
+	else
+		out.print("window.close();");
+%>">	
 </body>
 </html>

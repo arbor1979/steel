@@ -15,7 +15,7 @@ function delYeWuYuan(id)
 {
 	if(confirm('是否删除此帐户？'))
 	{
-		window.navigate('accountManage.do?param=del&id='+id);
+		window.location='accountManage.do?param=del&id='+id;
 	}
 }
 function addAccount()
@@ -31,7 +31,7 @@ function addAccount()
 }
 function getAccountList(deptid)
 {
-	window.navigate('accountManage.do?param=list&deptid='+deptid);
+	window.location='accountManage.do?param=list&deptid='+deptid;
 }
 function updateAccount(id,name,account)
 {
@@ -40,7 +40,7 @@ function updateAccount(id,name,account)
 		alert('帐户名称不能为空');
 		return false;
 	}
-	//window.navigate('accountManage.do?param=update&id='+id+'&accName='+name+'&account='+account);
+	//window.location='accountManage.do?param=update&id='+id+'&accName='+name+'&account='+account;
 
 	$.ajax({ 
 		  type:'POST', 
@@ -118,7 +118,7 @@ function updateAccount(id,name,account)
 	<form name="form1" method="post" action="accountManage.do" onsubmit="return addAccount();">
 	<input type="hidden" name="param" value="update">
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
 	  		
            
@@ -165,7 +165,7 @@ function updateAccount(id,name,account)
     	
 	<font color=#215385><b>帐户列表</b>(共 <b><%=accList.size()%></b> 个,合计金额 <b><span id="total" name="total"></span></b> 元)</font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th>编号</th>
 		<%if(ctx.isIfview()){%><th>分公司</th><%} %>

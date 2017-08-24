@@ -57,7 +57,7 @@ function updateExportNum(id, newexportamount)
 		return '1';	
 	}
 	
-	window.navigate("changeStoreBill.do?param=updateNum&id="+id+"&changeNum="+newexportamount);
+	window.location="changeStoreBill.do?param=updateNum&id="+id+"&changeNum="+newexportamount;
 }
 function updateExportAmount(id, newexportamount)
 {
@@ -80,14 +80,14 @@ function updateExportAmount(id, newexportamount)
 		return '1';	
 	}
 	
-	window.navigate("changeStoreBill.do?param=updateAmount&id="+id+"&changeAmount="+newexportamount);
+	window.location="changeStoreBill.do?param=updateAmount&id="+id+"&changeAmount="+newexportamount;
 }
 
 function deleteATempImportGoods(id)
 {
 	if(confirm("确定要删除该记录吗？")) 
 	{
-		window.navigate("changeStoreBill.do?param=del&id="+id);
+		window.location="changeStoreBill.do?param=del&id="+id;
 	}
 }
 
@@ -107,7 +107,7 @@ function deleteAllGoods(billid)
 	
 	if(confirm("确定要清空该列表吗？")) 
 	{
-		window.navigate("changeStoreBill.do?param=delAll&billId="+billid);
+		window.location="changeStoreBill.do?param=delAll&billId="+billid;
 	}
 }
 
@@ -258,7 +258,7 @@ function showModalWindow(form,storeid)
 	<input type="hidden" name="billId"  value="<%=cbf.getBillId()%>">
 	<input type="hidden" name="param" value="submit">
 	<input type="hidden" name="obj4numbercheck" value="">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	 <tr>
           	<td  align="right" > 
                 <b>*转出仓库:</b>
@@ -312,7 +312,7 @@ function showModalWindow(form,storeid)
 	
 	<font color=#215385><b>货物列表</b></font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -373,7 +373,7 @@ function showModalWindow(form,storeid)
 	        %>
 	</TABLE>
 	</form>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 
 	  <tr>
             <td  align="right" > 

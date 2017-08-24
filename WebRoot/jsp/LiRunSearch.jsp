@@ -76,7 +76,7 @@ function viewDetail(url)
      <form name="form1" method="post" action="liRunSearch.do">
     	<input type="hidden" name="searchbutton" value="查询"> 	
     	<input type="hidden" name="orderby" value="<%=orderby %>"> 	
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
           
@@ -139,7 +139,7 @@ function viewDetail(url)
     	
 	<font color=#215385>查询结果(共 <b><%=flowList.size() %></b> 个记录)
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th></th>
 		<th><a class="tablehead" href="javascript:orderList('goodsid','<%=orderby%>');">

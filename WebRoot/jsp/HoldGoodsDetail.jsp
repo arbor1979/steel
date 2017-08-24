@@ -48,7 +48,7 @@
 	<IMG src="images/line1.gif" border=0>
 	<form name="form2" method="post" action="" >
 	<div id="p_content">
-	<table id="tab1"  width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">
+	<table id="tab1"   class="mailtable">
 	  <tr>
 	     <td colspan="7">
 		 </td>
@@ -96,8 +96,8 @@
 	if(detail.size()>0)
 	{
 %>
-		&nbsp;&nbsp;<input type="button" value=" 处理 " onclick="window.navigate('HandlerHoldGoods.do?id=<%=id %>');">
-		&nbsp;&nbsp;<input type="button" value=" 删除 " onclick="if(confirm('是否确认删除？')){window.navigate('DeleteHoldGoods.do?id=<%=id %>');}">
+		&nbsp;&nbsp;<input type="button" value=" 处理 " onclick="window.location='HandlerHoldGoods.do?id=<%=id %>';">
+		&nbsp;&nbsp;<input type="button" value=" 删除 " onclick="if(confirm('是否确认删除？')){window.location='DeleteHoldGoods.do?id=<%=id %>';}">
 <%
 	}
 %>

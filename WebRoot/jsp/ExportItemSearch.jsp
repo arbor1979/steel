@@ -115,7 +115,7 @@ function viewDetail(url)
     	<input type="hidden" name="typeid"  value="">
     	<input type="hidden" name="orderby"  value="<%=iisr.getOrderStr() %>">
     	<input type="hidden" name="searchbutton" value="查询">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right"> 
                 <b>单号:</b>
@@ -191,8 +191,8 @@ function viewDetail(url)
 	         <td>
 	         	<select name="oper">
 	         		<option value="" <%=(iisr.getOper().equals("")?"selected":"") %>>请选择...</option>
-	         		<option value=">" <%=(iisr.getOper().equals(">")?"selected":"") %>>大于</option>
-	         		<option value="<" <%=(iisr.getOper().equals("<")?"selected":"") %>>小于</option>
+	         		<option value="&gt;" <%=(iisr.getOper().equals(">")?"selected":"") %>>大于</option>
+	         		<option value="&lt;" <%=(iisr.getOper().equals("<")?"selected":"") %>>小于</option>
 	         		<option value="=" <%=(iisr.getOper().equals("=")?"selected":"") %>>等于</option>
 	         	</select>
 	         	<input type=text name='exportUnitPrice' size="10" class="none" value="<%=(iisr.getOper().equals("")?"":iisr.getGif().getExportUnitPrice()) %>">
@@ -272,7 +272,7 @@ function viewDetail(url)
 	</div>
 	<IMG src="images/line1.gif" border=0 width=900>
 	
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 
 		<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('billid','<%=iisr.getOrderStr()%>');">单号</a><%if(iisr.getOrderStr().equals("billid")) out.print("↓"); if(iisr.getOrderStr().equals("billid desc")) out.print("↑");%></th>

@@ -15,7 +15,7 @@
 <script language="JavaScript">
 function SubmitThis(deptid)
 {
-	window.navigate('monthSell.do?deptid='+deptid);
+	window.location='monthSell.do?deptid='+deptid;
 }
 function mySubmit1(){
 
@@ -89,7 +89,7 @@ function mySubmit1(){
      	<input type="hidden" name="classid"  value="">
     	<input type="hidden" name="typeid"  value="">
     	<input type="hidden" name="searchbutton" value="查询"> 	
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
           <tr>
           
@@ -189,7 +189,7 @@ function mySubmit1(){
     	
 	<font color=#215385>合计入库：<b><%=oConvert.getRound(total1,4) %></b> 吨，合计销售：<b><%=oConvert.getRound(total2,4) %></b> 吨</font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		<tr bgcolor="#C2CEDC">
 		<th></th>
 		<%

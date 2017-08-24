@@ -1,10 +1,8 @@
-
-
 <%@ page contentType="text/html; charset=gb2312" language="java" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-
 <HTML>
 <HEAD>
+<meta http-equiv="X-UA-Compatible" content="IE=7">
 <TITLE>天天阳光钢材进销存系统</TITLE>
 
 <META http-equiv=Content-Type content="text/html; charset=gb2312">

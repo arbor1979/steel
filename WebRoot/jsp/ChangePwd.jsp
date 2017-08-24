@@ -69,7 +69,7 @@ function addUserRec()
     <td valign="top" colspan="2"> 
     <%if(suc.equals("1")){%>
     <br><br>
-<h3 align=center>密码更改成功！</h3><p align=center><input type="button" value="返回" onclick="window.navigate('changePwd.do');"></p><br>	
+<h3 align=center>密码更改成功！</h3><p align=center><input type="button" value="返回" onclick="window.location='changePwd.do';"></p><br>	
 	<%}else{ %>
     
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -81,7 +81,7 @@ function addUserRec()
     	<form name="form1" method="post" action="changePwd.do?param=change" onSubmit="return addUserRec();">
     	<input type="hidden" name="id" value="<%=fi.getId() %>">    	
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr>
             <td  align="right" width=40%> 
                 <b>*登陆名:</b>

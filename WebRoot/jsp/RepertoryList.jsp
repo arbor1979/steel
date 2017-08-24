@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <script language="javascript" src="js/menu.js">
 </script>
+
 <script language="JavaScript">
 
 function mySubmit()
@@ -28,7 +29,7 @@ function orderList(order,old)
 }
 function updateMemo(goodsid,storeid,memo)
 {
-	window.navigate('repertoryList.do?param=updatememo&goodsId='+goodsid+'&storeid='+storeid+'&memo='+memo);
+	window.location='repertoryList.do?param=updatememo&goodsId='+goodsid+'&storeid='+storeid+'&memo='+memo;
 }
 
 </script>
@@ -89,7 +90,7 @@ function updateMemo(goodsid,storeid,memo)
           <input type="hidden" name="goodsClass" value="<%=gif.getGoodsClass() %>">
           <input type="hidden" name="ifprint" value="0">
           <input type="hidden" name="orderby"  value="<%=orderby %>">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  
 	  <tr>
             
@@ -179,7 +180,7 @@ function updateMemo(goodsid,storeid,memo)
 	</div>
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="5" cellspacing="1" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	<tr bgcolor="#C2CEDC">
 		<th><a class="tablehead" href="javascript:orderList('a.goodsid','<%=orderby%>');">²úÆ·±àºÅ</a><%if(orderby.equals("a.goodsid")) out.print("¡ý"); if(orderby.equals("a.goodsid desc")) out.print("¡ü");%></th>
 		<th><a class="tablehead" href="javascript:orderList('goodstypename','<%=orderby%>');">Ãû³Æ</a><%if(orderby.equals("goodstypename")) out.print("¡ý"); if(orderby.equals("goodstypename desc")) out.print("¡ü");%></th>

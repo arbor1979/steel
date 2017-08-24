@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=gbk" language="java" %>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <title>天天阳光钢材进销存系统</title>
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <script language="javascript" src="js/menu.js">

@@ -1499,7 +1499,7 @@ public class GoodsExportInfo
                 	strSQL = "insert into TabGoodsRepertory (goodsid,repertoryamount,repertoryNum,storeid,avgprice) values('"+rs.getString("goodsid")+"',"+
                 	rs.getString("exportamount")+","+rs.getString("exportNum")+","+rs.getString("storeid")+","+avgprice+")";
                 }
-                nRet=stmt1.executeUpdate(strSQL);
+                nRet=dbc.executeUpdate(stmt1,strSQL);
         		if(nRet != 1)
                 	throw new Exception("更新库存记录失败");
                 
@@ -2094,7 +2094,7 @@ public class GoodsExportInfo
                 	strSQL = "insert into TabGoodsRepertory (goodsid,repertoryamount,storeid,avgprice) values('"+rs.getString("goodsid")+"',"+
                 	rs.getString("exportamount")+","+rs.getString("storeid")+","+avgprice+")";
                 }
-                nRet=stmt1.executeUpdate(strSQL);
+                nRet=dbc.executeUpdate(stmt1,strSQL);
         		if(nRet != 1)
                 	throw new Exception("更新库存记录失败");
                 
@@ -2107,7 +2107,7 @@ public class GoodsExportInfo
             strSQL = "update TabGoodsRepertory set RepertoryAmount=0 where Round(RepertoryAmount,3)=0";
             nRet=stmt.executeUpdate(strSQL);
             
-            strSQL = "update TabGoodsExportInfo set confirmflage='3' WHERE  BillID=" + oldbillid+" and deptid="+deptid;
+            strSQL = "update TabGoodsExportInfo set confirmflage='3' WHERE confirmFlage='1' and BillID=" + oldbillid+" and deptid="+deptid;
             nRet = stmt.executeUpdate(strSQL);
             if(nRet != 1)
             	throw new Exception("撤销单据失败");

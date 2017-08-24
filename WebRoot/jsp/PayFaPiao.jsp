@@ -19,7 +19,7 @@ function ConfirmPay(kind,billid,deptid,factory)
 		msg="是否确认发票已开具？";
 	if(confirm(msg))
 	{
-		window.navigate("payFaPiao.do?param=pay&factory="+factory+"&kind="+kind+"&billid="+billid+"&deptid="+deptid);
+		window.location="payFaPiao.do?param=pay&factory="+factory+"&kind="+kind+"&billid="+billid+"&deptid="+deptid;
 	}
 }
 function viewDetail(url)
@@ -96,7 +96,7 @@ function orderList(order,old)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -153,7 +153,7 @@ function orderList(order,old)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -208,7 +208,7 @@ function orderList(order,old)
         </tr>
         
       </table>
-	<p align="center"><input type="button" value=" 返回 " onclick="window.navigate('payFaPiao.do?kind=<%=kind %>');">
+	<p align="center"><input type="button" value=" 返回 " onclick="window.location='payFaPiao.do?kind=<%=kind %>';">
     </td>
     <td width="5"></td>
   </tr>

@@ -8,6 +8,7 @@
 <title>天天阳光钢材进销存系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
 <link rel="stylesheet" href="css/stylePrint.css" type="text/css">
+<script language="javascript" src="js/LodopFuncs.js"></script>
 </head>
 
 <body >
@@ -20,6 +21,7 @@
 	
 %>
 <br>
+<div id="main">
 <h2 align="center" style="font-family: 楷体_GB2312;"><%=ibf.getShortname() %>【<%=(ibf.getKind()==1?"收":"付") %>款单】</h2>
 <table width="100%" align="cneter">
 <tr >
@@ -69,35 +71,36 @@
 	<td align=right></td>
 	</tr>
 	</table>
-	<%
-if(ifprint.equals("1") || ifprint.equals("2"))
-{
-%>
-<script>
-	function printbill()
-	{
-	//printtr.style.display = "none";
-		document.write("<object ID='WebBrowser' WIDTH=0 HEIGHT=0 CLASSID='CLSID:8856F961-340A-11D0-A96B-00C04FD705A2'></object>"); 
-		WebBrowser.ExecWB(7,1); 
-	//window.history.back(-1);
-	//printtr.style.display = "";
-	//window.opener=null; 
-	//window.close(); 
-	
-	}
-	printbill();
+</div>
 
-<%  
-	if(ifprint.equals("1"))
-		out.print("window.navigate('yuShouKuan.do?factory="+ibf.getFactory()+"&kind="+ibf.getKind()+"');");
+<script>
+	var LODOP;
+	function printBill()
+	{
+		LODOP=getLodop();  
+		LODOP.PRINT_INITA(0,0,522,333,"收付款单");	
+		//LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_全页");
+		LODOP.SET_PRINT_PAGESIZE(0,1950,950,"195");
+		LODOP.ADD_PRINT_HTM("5%","5%","90%","90%",document.getElementById('main').innerHTML);
+		LODOP.PREVIEW();
+	}
+<%
+	if(ifprint.equals("1")){
+%>
+	window.onload=function(){
+		
+		printBill();
+	};
+<%}%>	
+</script>
+<p align="center"><input type="button" name="printtr" value=" 打印 " onclick="printBill();">
+&nbsp;<input type="button" name="close" value=" 关闭 " onclick="
+<%if(ifprint.equals("1"))
+		out.print("window.location='yuShouKuan.do?factory="+ibf.getFactory()+"&kind="+ibf.getKind()+"';");
 	else
 		out.print("window.close();");
 %>
-</script>
-<%}else{ %>
-<p align="center"><input type="button" name="printtr" value=" 打印 " onclick="window.navigate('shouKuanItemView.do?billId=<%=ibf.getBillId() %>&deptid=<%=ibf.getDeptid() %>&ifprint=2');">
-&nbsp;<input type="button" name="close" value=" 关闭 " onclick="window.close();">
-<%} %>
+">
 </body>
 
 </html>

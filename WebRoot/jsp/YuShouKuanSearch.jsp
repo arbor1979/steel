@@ -99,7 +99,7 @@ function viewDetail(url)
      
     <font color=#215385><%=(kind==1?"预收":"预付")+ch%>操作记录（共 <b><%=ys.allnum%></b> 笔，当前余额：<b><%=nf.format(ys.realmoney)%></b> 元，待结<%=ch %>：<b><%=nf.format(ys.allmoney)%></b> 元，实欠：<b><%=nf.format(ys.allmoney-ys.realmoney)%></b>）</font>
 	<IMG src="images/line1.gif" width=900 border=0>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -185,7 +185,7 @@ function viewDetail(url)
 		<%}%>
 		</select> 页
 	</div>  
-	<p align="center"><input type="button" value=" 返回 " onclick="window.navigate('yuShouKuanSearch.do?kind=<%=kind %>');">
+	<p align="center"><input type="button" value=" 返回 " onclick="window.location='yuShouKuanSearch.do?kind=<%=kind %>';">
 	</td></tr>
     </table> 
     </td>

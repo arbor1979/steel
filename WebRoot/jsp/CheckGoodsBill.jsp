@@ -51,7 +51,7 @@ function updateExportNum(id, newexportamount,kind)
 		return '1';	
 	}
 	
-	window.navigate("checkGoodsBill.do?param=updateNum&kind="+kind+"&id="+id+"&checkNum="+newexportamount);
+	window.location="checkGoodsBill.do?param=updateNum&kind="+kind+"&id="+id+"&checkNum="+newexportamount;
 }
 function updateExportAmount(id, newexportamount,kind)
 {
@@ -74,7 +74,7 @@ function updateExportAmount(id, newexportamount,kind)
 		return '1';	
 	}
 	
-	window.navigate("checkGoodsBill.do?param=updateAmount&kind="+kind+"&id="+id+"&checkAmount="+newexportamount);
+	window.location="checkGoodsBill.do?param=updateAmount&kind="+kind+"&id="+id+"&checkAmount="+newexportamount;
 }
 function updateExportRealAmount(id, realamount,cur,kind)
 {
@@ -105,13 +105,13 @@ function updateExportRealAmount(id, realamount,cur,kind)
 		alert("重量必须大于0");
 		return '1';	
 	}
-	window.navigate("checkGoodsBill.do?param=updateAmount&kind="+kind+"&id="+id+"&checkAmount="+newexportamount);
+	window.location="checkGoodsBill.do?param=updateAmount&kind="+kind+"&id="+id+"&checkAmount="+newexportamount;
 }
 function deleteATempImportGoods(id,kind)
 {
 	if(confirm("确定要删除该记录吗？")) 
 	{
-		window.navigate("checkGoodsBill.do?param=del&kind="+kind+"&id="+id);
+		window.location="checkGoodsBill.do?param=del&kind="+kind+"&id="+id;
 	}
 }
 
@@ -131,7 +131,7 @@ function deleteAllGoods(billid,kind)
 	
 	if(confirm("确定要清空该列表吗？")) 
 	{
-		window.navigate("checkGoodsBill.do?param=delAll&kind="+kind+"&billId="+billid);
+		window.location="checkGoodsBill.do?param=delAll&kind="+kind+"&billId="+billid;
 	}
 }
 
@@ -268,7 +268,7 @@ function showModalWindow(form)
 	<input type="hidden" name="kind" value="<%=kind %>">
 	<input type="hidden" name="param"  value="submit">
 	<input type="hidden" name="obj4numbercheck" value="">
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -337,7 +337,7 @@ function showModalWindow(form)
 	        %>
 	</TABLE>
 	</form>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 
 	  <tr>
             <td  align="right" > 

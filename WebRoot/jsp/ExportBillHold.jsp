@@ -88,9 +88,9 @@ function viewDetail(url)
 		<td align='center'><%= ebf.getExportTime()%></td>
 		<td align='center'>
 		<%if(ctx.getUserName().equals(ebf.getSalesPerson())){ %>
-		<input type="button" value="处理" onclick="window.navigate('exportBillHold.do?param=deel&billId=<%=ebf.getBillId()%>');">
+		<input type="button" value="处理" onclick="window.location='exportBillHold.do?param=deel&billId=<%=ebf.getBillId()%>';">
 		<%} %>
-		<input type="button" value="删除" onclick="if(confirm('是否删除此意向单？')) window.navigate('exportBillHold.do?param=del&billId=<%=ebf.getBillId()%>');">
+		<input type="button" value="删除" onclick="if(confirm('是否删除此意向单？')) window.location='exportBillHold.do?param=del&billId=<%=ebf.getBillId()%>';">
 		
 		</td>
 		</tr>

@@ -26,7 +26,7 @@ function onprintclick()
 	window.print();
 }
 
-function window.onbeforeprint()
+ window.onbeforeprint=function()
 {
 	
 			try
@@ -37,7 +37,7 @@ function window.onbeforeprint()
 		
 }
 
-function window.onafterprint()
+window.onafterprint=function()
 {
 	
 			try

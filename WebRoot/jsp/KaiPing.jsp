@@ -68,7 +68,7 @@ function updateFromNum(id, newexportamount)
 		alert("数量必须大于0");
 		return '1';	
 	}	
-	window.navigate("kaiPing.do?param=updateFromNum&id="+id+"&fromNum="+newexportamount);
+	window.location="kaiPing.do?param=updateFromNum&id="+id+"&fromNum="+newexportamount;
 }
 
 
@@ -93,7 +93,7 @@ function updateFromAmount(id, newexportamount)
 		return '1';	
 	}
 	
-	window.navigate("kaiPing.do?param=updateFromAmount&id="+id+"&fromAmount="+newexportamount);
+	window.location="kaiPing.do?param=updateFromAmount&id="+id+"&fromAmount="+newexportamount;
 }
 function updateMoney(id, newimportprice)
 {
@@ -111,7 +111,7 @@ function updateMoney(id, newimportprice)
 	}
 	else
 	{
-		window.navigate("kaiPing.do?param=updateMoney&id="+id+"&jine="+newimportprice);
+		window.location="kaiPing.do?param=updateMoney&id="+id+"&jine="+newimportprice;
 		
 	}
 }
@@ -131,7 +131,7 @@ function updatePrice(id, newimportprice,fromAmount)
 	}
 	else
 	{
-		window.navigate("kaiPing.do?param=updatePrice&id="+id+"&fromPrice="+newimportprice+"&fromAmount="+fromAmount);
+		window.location="kaiPing.do?param=updatePrice&id="+id+"&fromPrice="+newimportprice+"&fromAmount="+fromAmount;
 		
 	}
 }
@@ -139,7 +139,7 @@ function deleteATempImportGoods(id)
 {
 	if(confirm("确定要删除该记录吗？")) 
 	{
-		window.navigate("kaiPing.do?param=del&id="+id);
+		window.location="kaiPing.do?param=del&id="+id;
 	}
 }
 
@@ -159,7 +159,7 @@ function deleteAllGoods()
 	
 	if(confirm("确定要清空该列表吗？")) 
 	{
-		window.navigate("kaiPing.do?param=delAll");
+		window.location="kaiPing.do?param=delAll";
 	}
 }
 
@@ -298,7 +298,7 @@ function showModalWindow(form)
 	<input type="hidden" name="billid" value="<%=cbf.getBillid() %>">
 	<input type="hidden" name="param" value="submit">
 	<input type="hidden" name="obj4numbercheck" value="">	
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	 <tr>
           <td align="right" >  
           	<b>备注说明:</b>
@@ -312,7 +312,7 @@ function showModalWindow(form)
 	</TABLE>
 	<font color=#215385><b>货物列表</b></font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -393,7 +393,7 @@ function showModalWindow(form)
 	        %>
 	</TABLE>
 	</form>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 
 	  <tr>
             <td  align="right" > 

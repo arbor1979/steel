@@ -100,7 +100,7 @@ function gotoPageByN(n){
     	out.print(ys.allmoney);
 	%></b> ิชฃฉ</font>
 	<IMG src="images/line1.gif" width=900 border=0>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 	
 		<tr bgcolor="#C2CEDC">
 		<th></th>

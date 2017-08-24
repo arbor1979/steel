@@ -117,7 +117,7 @@ function viewDetail(url)
     	<input type="hidden" name="classid"  value="<%=fbsr.getFyf().getClassid() %>">
     	<input type="hidden" name="typeid"  value="<%=fbsr.getFyf().getTypeid() %>">
     	<input type="hidden" name="searchbutton" value="²éÑ¯">
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right"> 
                 <b>µ¥ºÅ:</b>
@@ -161,9 +161,9 @@ function viewDetail(url)
 			<td>
 			<select name="oper">
 				<option value=""></option>
-				<option value=">" <%=(fbsr.getOper().equals(">")?"selected":"") %>>></option>
+				<option value="&gt;" <%=(fbsr.getOper().equals(">")?"selected":"") %>>></option>
 				<option value="=" <%=(fbsr.getOper().equals("=")?"selected":"") %>>=</option>
-				<option value="<" <%=(fbsr.getOper().equals("<")?"selected":"") %>><</option>
+				<option value="&lt;" <%=(fbsr.getOper().equals("<")?"selected":"") %>><</option>
 			</select><input type=text class="none" size=10 name="jine" value="<%=fbsr.getFyf().getJine() %>" onKeyUp="InputFloat(this);"></td>
           </tr>
           <tr>
@@ -232,7 +232,7 @@ function viewDetail(url)
 
 	<IMG src="images/line1.gif" border=0 width=900>
 
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>

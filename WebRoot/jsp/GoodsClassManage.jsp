@@ -105,7 +105,7 @@ function deleteGoodsClass(goodsclass)
 
 <form name="form1" method="post" action="goodsClassManage.do?param=add"  onSubmit="return addClass();">
 <br>
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 <tr>
 	<td align="center">
 	<font color=#215385>大类名称</font>
@@ -119,7 +119,7 @@ function deleteGoodsClass(goodsclass)
 <font color=#215385>大类列表 (共 <b><%=goodsClassList.size()%></b> 个)</font>
 <IMG src="images/line1.gif" border=0 width=900>
 <br>
-<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+<TABLE  class="mailtable">  
 <tr>
 <td align="center">
 	<table width="100%">
@@ -144,7 +144,7 @@ function deleteGoodsClass(goodsclass)
 			<td align=center>
 			<a href="javascript:deleteGoodsClass('<%=gci.getId()%>') "><IMG src="images/delto.gif" border=0></a>
 			</td>
-			<td align=center><input type="button" value=" 进入 " onclick="window.navigate('goodsTypeManage.do?classid=<%=gci.getId()%>');"></td>
+			<td align=center><input type="button" value=" 进入 " onclick="window.location='goodsTypeManage.do?classid=<%=gci.getId()%>';"></td>
 		</tr>
 		<%
 			}//for

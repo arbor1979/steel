@@ -175,7 +175,7 @@ public class GoodsCheckInfo
             	else
             		strSQL="insert into TabGoodsRepertory (goodsid,RepertoryAmount,RepertoryNum,storeid,avgprice) values('"+rs.getString("goodsid")+
             		"',"+rs.getString("checkamount")+","+rs.getString("checkNum")+","+rs.getString("storeid")+","+rs.getDouble("checkUnitPrice")+")";
-            	nRet=stmt1.executeUpdate(strSQL);	
+            	nRet=dbc.executeUpdate(stmt1,strSQL);	
             	if(nRet != 1)
                 {
                     nRet = -1;

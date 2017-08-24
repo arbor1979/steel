@@ -26,7 +26,7 @@ function updateEvaPrice(billid,id, newimportprice)
 	}
 	else
 	{
-		window.navigate("evaPriceHandle.do?billId="+billid+"&param=updatePrice&id="+id+"&evaPrice="+newimportprice);
+		window.location="evaPriceHandle.do?billId="+billid+"&param=updatePrice&id="+id+"&evaPrice="+newimportprice;
 		
 	}
 }
@@ -46,7 +46,7 @@ function updateEvaMoney(billid,id, newimportprice)
 	}
 	else
 	{
-		window.navigate("evaPriceHandle.do?billId="+billid+"&param=updateMoney&id="+id+"&evaMoney="+newimportprice);
+		window.location="evaPriceHandle.do?billId="+billid+"&param=updateMoney&id="+id+"&evaMoney="+newimportprice;
 		
 	}
 }
@@ -55,7 +55,7 @@ function deleteAllGoods(billId)
 	if(billId<=0)
 		alert("没有显示入库单");
 	else
-		window.navigate("evaPriceHandle.do?param=delall&billId="+billId);
+		window.location="evaPriceHandle.do?param=delall&billId="+billId;
 }
 
 function submitAllGoods()
@@ -264,7 +264,7 @@ function submitAllGoods()
 	<br>
 	<font color=#215385><b>货物列表</b></font>
 	<IMG src="images/line1.gif" border=0 width=900>
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">  
+	<TABLE  class="mailtable">  
 		
 		<tr bgcolor="#C2CEDC">
 		<th></th>
@@ -327,7 +327,7 @@ function submitAllGoods()
 	</TABLE>
 	</form>
 	
-	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+	<TABLE  class="mailtable"> 
 	  <tr>
             <td  align="right" > 
                 <b>单号:</b>

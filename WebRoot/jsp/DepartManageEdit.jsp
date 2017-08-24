@@ -115,7 +115,7 @@ function addUserRec()
     	<font color=#215385><b>编辑公司信息</b></font>
     	<IMG src="images/line1.gif" border=0 width=900>
     	<br>
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  	<tr>
             <td  align="right" width=15%> 
                 <b>*公司名称:</b>
@@ -258,9 +258,9 @@ function addUserRec()
 	</TABLE>
 	<p align=center><input name=addrec type=submit value=" 保存 ">&nbsp;
 	<%if(ctx.isIfview()){%>
-	<input name=back type=button value=" 返回 " onclick="window.navigate('departManage.do');">
+	<input name=back type=button value=" 返回 " onclick="window.location='departManage.do';">
 	<%}else{%>
-	<input name=back type=button value=" 返回 " onclick="window.navigate('login.do?userName=<%=ctx.getUserName() %>&password=<%=ctx.getPassword() %>');">
+	<input name=back type=button value=" 返回 " onclick="window.location='login.do?userName=<%=ctx.getUserName() %>&password=<%=ctx.getPassword() %>';">
 	<%} %>
 	</p>
 	</form>

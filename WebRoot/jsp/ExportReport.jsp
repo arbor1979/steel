@@ -294,7 +294,7 @@ function mySubmit1(){
     	<br>
     	<input type="hidden" name="start_rec_num"  value="1">
     	
-    	<TABLE width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable"> 
+    	<TABLE  class="mailtable"> 
 	  <tr>
 		<TD align="right" width=13%><b>售货时间:</b></TD>
 		<TD width=65%>&nbsp;&nbsp;
@@ -345,7 +345,7 @@ function mySubmit1(){
 	<IMG src="images/line1.gif" border=0>
 	<form name="form2" method="post" action="" >
 	<div id="p_content">
-	<table id="tab1"  width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#FFFFFF" class="mailtable">
+	<table id="tab1"   class="mailtable">
 	  <div id="p_title">
        <tr> 
        <td colspan="10" height="20" class="mainhead" align="center"><font size=4><b>饰品销售报表</b></font></td>
